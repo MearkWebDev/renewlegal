@@ -1,9 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/PageHero";
 import { CtaBand } from "@/components/site/CtaBand";
-import { SiteImage } from "@/components/site/SiteImage";
-import portraitHeroAsset from "@/assets/ehren-terenyi-renew-legal-portrait-2.png.asset.json";
-import portraitAsset from "@/assets/ehren-terenyi-renew-legal.webp.asset.json";
+import { BookOpen, FileText, Lightbulb, Newspaper } from "lucide-react";
+import editorialHeroAsset from "@/assets/renew-legal-articles-editorial.jpg.asset.json";
 
 export const Route = createFileRoute("/articles")({
   head: () => ({
