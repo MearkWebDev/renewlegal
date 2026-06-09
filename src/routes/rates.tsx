@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/PageHero";
 import { CtaBand } from "@/components/site/CtaBand";
+import officeAsset from "@/assets/renew-legal-premium-law-office.webp.asset.json";
 
 const faqs = [
   { q: "How much does a construction lawyer charge in Melbourne?", a: "Large national firms typically charge $450–$900 per hour for a senior construction lawyer. Boutique specialists like Renew Legal charge $400 per hour (ex GST). For most matters — contract review, claims advice, SOP adjudication — Renew Legal offers a fixed fee agreed before work begins." },
@@ -17,6 +18,7 @@ export const Route = createFileRoute("/rates")({
       { property: "og:title", content: "Clear, fixed-fee legal rates — Renew Legal" },
       { property: "og:description", content: "Fixed fees agreed before work begins. $400/hr or $1,800/day for extended engagements." },
       { property: "og:url", content: "/rates" },
+      { property: "og:image", content: officeAsset.url },
     ],
     links: [{ rel: "canonical", href: "/rates" }],
     scripts: [{
@@ -45,6 +47,8 @@ function Page() {
         eyebrow="Rates"
         title={<>Clear, fixed-fee legal rates</>}
         intro="Renew Legal is a fixed-fee firm. Legal work should be priced on the outcome you need, not the time taken to deliver it. A fixed fee means you know the cost before work begins — and there are no billing surprises at the end."
+        image={officeAsset.url}
+        imageAlt="Professional legal strategy discussion office – Renew Legal Melbourne"
       />
 
       <section className="container-prose py-24 lg:py-32">
@@ -64,10 +68,7 @@ function Page() {
         </div>
 
         <p className="mt-10 text-sm text-muted-foreground max-w-3xl leading-relaxed">
-          All fees in Australian dollars exclusive of GST. Disbursements — barrister
-          fees, filing fees, expert costs — are billed at cost with no mark-up. A costs
-          agreement is provided before any work commences, in accordance with the Legal
-          Profession Uniform Law.
+          All fees in Australian dollars exclusive of GST. Disbursements — barrister fees, filing fees, expert costs — are billed at cost with no mark-up. A costs agreement is provided before any work commences, in accordance with the Legal Profession Uniform Law.
         </p>
       </section>
 
@@ -79,19 +80,10 @@ function Page() {
           </div>
           <div className="lg:col-span-7 space-y-6 text-foreground/80 leading-relaxed">
             <p>
-              Before work begins, Renew Legal provides a written quote for the scope of
-              the engagement. The fixed fee covers all work within that scope —
-              drafting, advice, correspondence, negotiation attendance and file
-              management. If scope changes materially, a variation is agreed before
-              additional work proceeds.
+              Before work begins, Renew Legal provides a written quote for the scope of the engagement. The fixed fee covers all work within that scope — drafting, advice, correspondence, negotiation attendance and file management. If scope changes materially, a variation is agreed before additional work proceeds.
             </p>
             <p>
-              Construction projects operate on tight margins and tighter deadlines.
-              Hourly billing introduces cost uncertainty that most contractors and
-              project teams cannot budget for. The fixed-fee model was designed
-              specifically for the construction sector — where you are pricing a
-              contract before work starts, you deserve to know what your legal costs
-              will be too.
+              Construction projects operate on tight margins and tighter deadlines. Hourly billing introduces cost uncertainty that most contractors and project teams cannot budget for. The fixed-fee model was designed specifically for the construction sector — where you are pricing a contract before work starts, you deserve to know what your legal costs will be too.
             </p>
           </div>
         </div>

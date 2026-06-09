@@ -1,6 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/PageHero";
+import { Logo } from "@/components/site/Logo";
+import { SiteImage } from "@/components/site/SiteImage";
 import { Mail, Phone, MapPin, Linkedin, Clock } from "lucide-react";
+import officeAsset from "@/assets/renew-legal-premium-law-office.webp.asset.json";
+import portraitAsset from "@/assets/ehren-terenyi-renew-legal.webp.asset.json";
+import logoAsset from "@/assets/renew-legal-logo.png.asset.json";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -10,6 +15,7 @@ export const Route = createFileRoute("/contact")({
       { property: "og:title", content: "Contact Renew Legal — Melbourne Construction Lawyers" },
       { property: "og:description", content: "Speak directly with Ehren Terenyi, Principal. Specialist construction and renewables legal advice from Collins Street, Melbourne." },
       { property: "og:url", content: "/contact" },
+      { property: "og:image", content: officeAsset.url },
     ],
     links: [{ rel: "canonical", href: "/contact" }],
     scripts: [{
@@ -19,7 +25,8 @@ export const Route = createFileRoute("/contact")({
         "@type": "LocalBusiness",
         "@id": "renewlegal-au",
         name: "Renew Legal",
-        image: "/og-contact.jpg",
+        image: officeAsset.url,
+        logo: logoAsset.url,
         telephone: "+61 418 342 682",
         email: "ehren@renewlegal.com.au",
         address: {
@@ -51,33 +58,48 @@ function Page() {
         eyebrow="Contact"
         title={<>Get in touch with Renew Legal</>}
         intro="The best way to find out whether Renew Legal can help with your matter is a short conversation. Ehren responds personally to all enquiries within one business day."
+        image={officeAsset.url}
+        imageAlt="Renew Legal Melbourne office consultation environment"
       />
 
       <section className="container-prose py-24 lg:py-32 grid lg:grid-cols-12 gap-16">
         <div className="lg:col-span-5">
-          <div className="eyebrow">Direct contact</div>
-          <h2 className="mt-6 text-3xl lg:text-4xl text-navy">Ehren Terenyi — Principal</h2>
-          <div className="gold-rule mt-8" />
+          <div className="w-[160px] mb-10">
+            <Logo variant="dark" className="max-h-10" />
+          </div>
+          <div className="grid gap-8 md:grid-cols-[1.1fr_0.9fr] lg:grid-cols-1">
+            <div>
+              <div className="eyebrow">Direct contact</div>
+              <h2 className="mt-6 text-3xl lg:text-4xl text-navy">Ehren Terenyi — Principal</h2>
+              <div className="gold-rule mt-8" />
 
-          <div className="mt-10 space-y-6">
-            <ContactRow Icon={MapPin} label="Office">
-              Suite 208, 282 Collins Street<br />Block Arcade, Melbourne VIC 3000
-            </ContactRow>
-            <ContactRow Icon={Phone} label="Phone">
-              <a href="tel:+61418342682" className="hover:text-gold">+61 418 342 682</a>
-            </ContactRow>
-            <ContactRow Icon={Mail} label="Email">
-              <a href="mailto:ehren@renewlegal.com.au" className="hover:text-gold">ehren@renewlegal.com.au</a>
-            </ContactRow>
-            <ContactRow Icon={Linkedin} label="LinkedIn">
-              <a href="https://www.linkedin.com/in/ehrenterenyi" target="_blank" rel="noreferrer" className="hover:text-gold">
-                linkedin.com/in/ehrenterenyi
-              </a>
-            </ContactRow>
-            <ContactRow Icon={Clock} label="Hours">
-              Monday–Friday, 9:00am – 5:30pm AEST<br />
-              <span className="text-xs text-muted-foreground">Response within 1 business day</span>
-            </ContactRow>
+              <div className="mt-10 space-y-6">
+                <ContactRow Icon={MapPin} label="Office">
+                  Suite 208, 282 Collins Street<br />Block Arcade, Melbourne VIC 3000
+                </ContactRow>
+                <ContactRow Icon={Phone} label="Phone">
+                  <a href="tel:+61418342682" className="hover:text-gold">+61 418 342 682</a>
+                </ContactRow>
+                <ContactRow Icon={Mail} label="Email">
+                  <a href="mailto:ehren@renewlegal.com.au" className="hover:text-gold">ehren@renewlegal.com.au</a>
+                </ContactRow>
+                <ContactRow Icon={Linkedin} label="LinkedIn">
+                  <a href="https://www.linkedin.com/in/ehrenterenyi" target="_blank" rel="noreferrer" className="hover:text-gold">
+                    linkedin.com/in/ehrenterenyi
+                  </a>
+                </ContactRow>
+                <ContactRow Icon={Clock} label="Hours">
+                  Monday–Friday, 9:00am – 5:30pm AEST<br />
+                  <span className="text-xs text-muted-foreground">Response within 1 business day</span>
+                </ContactRow>
+              </div>
+            </div>
+            <SiteImage
+              src={portraitAsset.url}
+              alt="Renew Legal Melbourne Office – Principal portrait"
+              className="aspect-[4/5] max-w-sm"
+              imageClassName="object-contain bg-stone p-6"
+            />
           </div>
         </div>
 
@@ -112,8 +134,7 @@ function Page() {
               Send enquiry to Renew Legal
             </button>
             <p className="text-xs text-muted-foreground">
-              Submitting an enquiry does not create a lawyer-client relationship. Do not
-              send confidential information until a costs agreement is in place.
+              Submitting an enquiry does not create a lawyer-client relationship. Do not send confidential information until a costs agreement is in place.
             </p>
           </form>
         </div>

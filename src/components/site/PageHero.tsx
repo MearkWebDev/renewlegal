@@ -5,20 +5,24 @@ interface PageHeroProps {
   title: ReactNode;
   intro?: ReactNode;
   image?: string;
+  imageAlt?: string;
+  priority?: boolean;
 }
 
-export function PageHero({ eyebrow, title, intro, image }: PageHeroProps) {
+export function PageHero({ eyebrow, title, intro, image, imageAlt = "", priority = false }: PageHeroProps) {
   return (
     <section className="relative bg-navy text-white pt-40 pb-24 lg:pt-56 lg:pb-32 overflow-hidden">
       {image && (
-        <div
-          className="absolute inset-0 opacity-25 bg-cover bg-center"
-          style={{ backgroundImage: `url(${image})` }}
-          aria-hidden
+        <img
+          src={image}
+          alt={imageAlt}
+          loading={priority ? "eager" : "lazy"}
+          decoding="async"
+          className="absolute inset-0 h-full w-full object-cover opacity-40"
         />
       )}
       <div
-        className="absolute inset-0 bg-gradient-to-br from-navy-deep via-navy to-navy/80"
+        className="absolute inset-0 bg-gradient-to-br from-navy-deep/95 via-navy/85 to-navy/70"
         aria-hidden
       />
       <div className="container-prose relative">

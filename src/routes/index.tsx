@@ -1,11 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import heroWind from "@/assets/hero-windfarm.jpg";
-import heroConstruction from "@/assets/hero-construction.jpg";
-import heroOffice from "@/assets/hero-office.jpg";
-import portrait from "@/assets/portrait-principal.jpg";
 import { CtaBand } from "@/components/site/CtaBand";
+import { SiteImage } from "@/components/site/SiteImage";
 import { useEffect, useState } from "react";
+import windFarmAsset from "@/assets/renew-legal-wind-farm.webp.asset.json";
+import constructionAsset from "@/assets/renew-legal-construction-project.webp.asset.json";
+import officeAsset from "@/assets/renew-legal-premium-law-office.webp.asset.json";
+import portraitAsset from "@/assets/ehren-terenyi-renew-legal.webp.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -15,6 +16,7 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "Construction, Renewables & Technology Lawyers — Melbourne" },
       { property: "og:description", content: "Specialist legal counsel for construction, infrastructure, renewables, EPC contracts and technology integration projects throughout Australia." },
       { property: "og:url", content: "/" },
+      { property: "og:image", content: windFarmAsset.url },
     ],
     links: [{ rel: "canonical", href: "/" }],
     scripts: [
@@ -30,6 +32,16 @@ export const Route = createFileRoute("/")({
           })),
         }),
       },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ImageObject",
+          contentUrl: windFarmAsset.url,
+          name: "Renewables Project Legal Counsel Australia",
+          description: "Wind farm project image representing Renew Legal's Australian renewables and EPC legal counsel experience.",
+        }),
+      },
     ],
   }),
   component: HomePage,
@@ -40,7 +52,8 @@ const slides = [
     eyebrow: "01 — Construction & Renewables",
     title: "Construction, Renewables & Technology Lawyers — Melbourne",
     body: "Specialist legal counsel for EPC, D&C, BESS, wind, solar and technology integration projects. Ehren Terenyi has advised on more than 6 GW of renewables projects across Australia and Asia Pacific.",
-    image: heroWind,
+    image: windFarmAsset.url,
+    alt: "Renewables Project Legal Counsel Australia",
     cta1: { label: "See our experience", to: "/experience" as const },
     cta2: { label: "Book a 15-min call", to: "/contact" as const },
   },
@@ -48,7 +61,8 @@ const slides = [
     eyebrow: "02 — Contractors & Consultants",
     title: "External Legal Counsel for Contractors — without the law firm overhead",
     body: "Contract review, security of payment, claims management and dispute resolution for Australian construction contractors. Fixed fees. No surprises.",
-    image: heroConstruction,
+    image: constructionAsset.url,
+    alt: "Construction Lawyer Melbourne – Renew Legal",
     cta1: { label: "Legal help for contractors", to: "/for-contractors" as const },
     cta2: { label: "See our rates", to: "/rates" as const },
   },
@@ -56,7 +70,8 @@ const slides = [
     eyebrow: "03 — For Law Firms",
     title: "Specialist Construction Consultant for Law Firms",
     body: "Join your team as Special Counsel — construction, renewables and technology integration expertise on demand. Fixed cost, no employment obligations, top-tier standards.",
-    image: heroOffice,
+    image: officeAsset.url,
+    alt: "Premium corporate law office interior for Renew Legal Melbourne",
     cta1: { label: "Consultant services", to: "/for-law-firms" as const },
     cta2: { label: "View rates", to: "/rates" as const },
   },
@@ -95,7 +110,6 @@ function HomePage() {
 
   return (
     <>
-      {/* HERO SLIDER */}
       <section className="relative h-screen min-h-[680px] overflow-hidden bg-navy-deep text-white">
         {slides.map((s, i) => (
           <div
@@ -106,13 +120,13 @@ function HomePage() {
           >
             <img
               src={s.image}
-              alt=""
+              alt={s.alt}
+              loading={i === 0 ? "eager" : "lazy"}
+              decoding="async"
               className="absolute inset-0 w-full h-full object-cover scale-105"
-              style={{
-                animation: i === active ? "kenburns 12s ease-out forwards" : undefined,
-              }}
+              style={{ animation: i === active ? "kenburns 12s ease-out forwards" : undefined }}
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-navy-deep/95 via-navy/80 to-navy/40" />
+            <div className="absolute inset-0 bg-gradient-to-br from-navy-deep/95 via-navy/80 to-navy/45" />
           </div>
         ))}
 
@@ -121,15 +135,9 @@ function HomePage() {
         <div className="relative h-full flex items-center">
           <div className="container-prose w-full">
             <div className="max-w-3xl">
-              <div className="eyebrow !text-gold-soft transition-all duration-700" key={`e-${active}`}>
-                {slides[active].eyebrow}
-              </div>
-              <h1 className="mt-6 text-4xl md:text-6xl lg:text-7xl" key={`t-${active}`}>
-                {slides[active].title}
-              </h1>
-              <p className="mt-8 max-w-xl text-lg text-white/80 leading-relaxed" key={`b-${active}`}>
-                {slides[active].body}
-              </p>
+              <div className="eyebrow !text-gold-soft">{slides[active].eyebrow}</div>
+              <h1 className="mt-6 text-4xl md:text-6xl lg:text-7xl">{slides[active].title}</h1>
+              <p className="mt-8 max-w-xl text-lg text-white/80 leading-relaxed">{slides[active].body}</p>
               <div className="mt-12 flex flex-wrap gap-4">
                 <Link to={slides[active].cta1.to} className="btn-primary !bg-gold !border-gold !text-navy-deep hover:!bg-white hover:!border-white">
                   {slides[active].cta1.label} <ArrowRight size={16} />
@@ -152,16 +160,13 @@ function HomePage() {
                     }`}
                   />
                 ))}
-                <span className="ml-4 text-xs tracking-[0.2em] text-white/50">
-                  0{active + 1} / 0{slides.length}
-                </span>
+                <span className="ml-4 text-xs tracking-[0.2em] text-white/50">0{active + 1} / 0{slides.length}</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* TRUST BAR */}
       <section className="bg-stone border-y border-border">
         <div className="container-prose py-12 grid grid-cols-2 lg:grid-cols-5 gap-8 text-center">
           {[
@@ -179,15 +184,15 @@ function HomePage() {
         </div>
       </section>
 
-      {/* ABOUT */}
       <section className="container-prose py-28 lg:py-40 grid lg:grid-cols-12 gap-12 lg:gap-20">
         <div className="lg:col-span-5">
           <div className="relative">
-            <img
-              src={portrait}
-              alt="Ehren Terenyi, Principal of Renew Legal"
-              loading="lazy"
-              className="w-full aspect-[4/5] object-cover grayscale-[20%]"
+            <SiteImage
+              src={portraitAsset.url}
+              alt="Ehren Terenyi, Principal of Renew Legal Melbourne"
+              className="aspect-[4/5]"
+              imageClassName="object-contain bg-stone p-6"
+              priority
             />
             <div className="absolute -bottom-6 -right-6 bg-gold text-navy-deep px-6 py-4 hidden md:block">
               <div className="font-display text-2xl">Ehren Terenyi</div>
@@ -197,24 +202,14 @@ function HomePage() {
         </div>
         <div className="lg:col-span-7">
           <div className="eyebrow">About — Renew Legal</div>
-          <h2 className="mt-6 text-3xl lg:text-5xl text-navy">
-            Specialist construction and renewables law — Melbourne
-          </h2>
+          <h2 className="mt-6 text-3xl lg:text-5xl text-navy">Specialist construction and renewables law — Melbourne</h2>
           <div className="gold-rule mt-8" />
           <div className="mt-8 space-y-6 text-foreground/80 leading-relaxed">
             <p>
-              Renew Legal is a boutique construction and renewables law practice founded
-              by Ehren Terenyi in 2023. Ehren is a construction, infrastructure and
-              technology integration lawyer with more than two decades of experience
-              across boutique engineering firms, top-tier Australian law firms,
-              international law firms, Federal Court Associate roles, and senior in-house
-              commercial and legal counsel positions.
+              Renew Legal is a boutique construction and renewables law practice founded by Ehren Terenyi in 2023. Ehren is a construction, infrastructure and technology integration lawyer with more than two decades of experience across boutique engineering firms, top-tier Australian law firms, international law firms, Federal Court Associate roles, and senior in-house commercial and legal counsel positions.
             </p>
             <p>
-              As a sole practice, every matter is handled personally. Clients deal
-              directly with an experienced senior lawyer — not a graduate or paralegal —
-              from the first call to final resolution. This is the core difference
-              between Renew Legal and a large firm.
+              As a sole practice, every matter is handled personally. Clients deal directly with an experienced senior lawyer — not a graduate or paralegal — from the first call to final resolution. This is the core difference between Renew Legal and a large firm.
             </p>
           </div>
           <Link to="/experience" className="btn-ghost-dark mt-10 inline-flex">
@@ -223,7 +218,6 @@ function HomePage() {
         </div>
       </section>
 
-      {/* PRACTICE AREAS */}
       <section className="bg-stone">
         <div className="container-prose py-28 lg:py-36">
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16">
@@ -232,8 +226,7 @@ function HomePage() {
               <h2 className="mt-6 text-3xl lg:text-5xl text-navy">Areas of specialisation</h2>
             </div>
             <p className="lg:max-w-md text-muted-foreground leading-relaxed">
-              Deep technical knowledge of construction, renewables and technology
-              integration — supported by commercial experience on every side of the table.
+              Deep technical knowledge of construction, renewables and technology integration — supported by commercial experience on every side of the table.
             </p>
           </div>
 
@@ -256,7 +249,6 @@ function HomePage() {
         </div>
       </section>
 
-      {/* WHY */}
       <section className="container-prose py-28 lg:py-40">
         <div className="max-w-3xl">
           <div className="eyebrow">Why Renew Legal</div>
@@ -279,7 +271,6 @@ function HomePage() {
         </div>
       </section>
 
-      {/* FAQ */}
       <section className="bg-stone">
         <div className="container-prose py-28 lg:py-36 grid lg:grid-cols-12 gap-12">
           <div className="lg:col-span-4">

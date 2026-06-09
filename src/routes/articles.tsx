@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/PageHero";
 import { CtaBand } from "@/components/site/CtaBand";
+import officeAsset from "@/assets/renew-legal-premium-law-office.webp.asset.json";
 
 export const Route = createFileRoute("/articles")({
   head: () => ({
@@ -10,6 +11,7 @@ export const Route = createFileRoute("/articles")({
       { property: "og:title", content: "Construction Law Insights — Renew Legal" },
       { property: "og:description", content: "Practical articles on construction law, EPC, SOP, bank guarantees, settlement releases and renewables disputes." },
       { property: "og:url", content: "/articles" },
+      { property: "og:image", content: officeAsset.url },
     ],
     links: [{ rel: "canonical", href: "/articles" }],
   }),
@@ -44,6 +46,8 @@ function Page() {
         eyebrow="Insights"
         title={<>Construction law insights — practical articles</>}
         intro="Plain-English articles on construction law, renewables contracts and legal strategy — written for contractors, project managers and in-house lawyers who want practical, usable information."
+        image={officeAsset.url}
+        imageAlt="Professional legal publishing workspace – Renew Legal"
       />
 
       <section className="container-prose py-24 lg:py-32">
@@ -70,14 +74,13 @@ function Page() {
             <div className="eyebrow">Coming soon</div>
             <h2 className="mt-6 text-3xl lg:text-5xl text-navy">Publishing queue</h2>
             <p className="mt-6 text-muted-foreground leading-relaxed">
-              The next ten articles, scheduled for publication. Each addresses a
-              high-intent question contractors and project teams routinely ask.
+              The next ten articles, scheduled for publication. Each addresses a high-intent question contractors and project teams routinely ask.
             </p>
           </div>
           <ol className="mt-14 grid md:grid-cols-2 gap-x-12 gap-y-2 max-w-5xl">
             {queue.map((t, i) => (
               <li key={t} className="flex gap-6 py-5 border-b border-border">
-                <span className="text-xs tracking-[0.2em] text-gold pt-1">0{i < 9 ? i + 1 : i + 1}</span>
+                <span className="text-xs tracking-[0.2em] text-gold pt-1">{String(i + 1).padStart(2, "0")}</span>
                 <span className="text-foreground/85 font-display text-lg">{t}</span>
               </li>
             ))}

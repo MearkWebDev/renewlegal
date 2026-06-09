@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/PageHero";
 import { CtaBand } from "@/components/site/CtaBand";
-import heroOffice from "@/assets/hero-office.jpg";
+import officeAsset from "@/assets/renew-legal-premium-law-office.webp.asset.json";
 
 const faqs = [
   { q: "Can Renew Legal join our team for a single matter?", a: "Yes. There is no minimum engagement term. Renew Legal can join your team for a single matter, a defined project period, or an ongoing arrangement entirely at your discretion. You pay only for client-billable work actually performed." },
@@ -19,6 +19,7 @@ export const Route = createFileRoute("/for-law-firms")({
       { property: "og:title", content: "Specialist Construction Law Consultant for Law Firms" },
       { property: "og:description", content: "Bring in Renew Legal as a specialist resource — top-tier standards without the employment or overhead of a permanent hire." },
       { property: "og:url", content: "/for-law-firms" },
+      { property: "og:image", content: officeAsset.url },
     ],
     links: [{ rel: "canonical", href: "/for-law-firms" }],
     scripts: [{
@@ -48,7 +49,9 @@ function Page() {
         eyebrow="For Law Firms"
         title={<>Specialist construction law consultant for law firms</>}
         intro="Rather than referring a specialist matter away, bring Renew Legal in as a specialist resource. Ehren Terenyi works alongside your team — under your direction, on your time-recording system, to the standard of a top-tier Special Counsel — without the employment, overhead or long-term commitment of a permanent hire."
-        image={heroOffice}
+        image={officeAsset.url}
+        imageAlt="Premium law office for construction law consultant Melbourne"
+        priority
       />
 
       <section className="container-prose py-24 lg:py-32">

@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/PageHero";
 import { CtaBand } from "@/components/site/CtaBand";
-import heroConstruction from "@/assets/hero-construction.jpg";
+import { SiteImage } from "@/components/site/SiteImage";
+import constructionAsset from "@/assets/renew-legal-construction-project.webp.asset.json";
+import tollingAsset from "@/assets/renew-legal-infrastructure-tolling.webp.asset.json";
 
 const faqs = [
   { q: "What should I look for when reviewing a construction contract?", a: "Key issues include: whether there is a liability cap (and whether carve-outs eliminate its value), whether consequential loss is excluded, the scope of indemnities, EOT entitlements and force majeure, defects liability, payment and security terms, termination rights, and dispute resolution. AS 4000, AS 4902 and ABIC forms have been progressively amended by principals to be more employer-friendly — always read special conditions carefully." },
@@ -19,6 +21,7 @@ export const Route = createFileRoute("/for-contractors")({
       { property: "og:title", content: "External Legal Counsel for Construction Contractors — Melbourne" },
       { property: "og:description", content: "Fixed-fee construction contract review, SOP adjudication and dispute resolution for contractors and consultants." },
       { property: "og:url", content: "/for-contractors" },
+      { property: "og:image", content: constructionAsset.url },
     ],
     links: [{ rel: "canonical", href: "/for-contractors" }],
     scripts: [{
@@ -60,17 +63,23 @@ function Page() {
         eyebrow="For Contractors & Consultants"
         title={<>External legal counsel for construction contractors — Melbourne</>}
         intro="The draft contract from your head contractor needs to be signed this week. Price, dates and scope look acceptable — but did you intend to take on all the client's risks? Renew Legal helps contractors identify what matters, push back on what is unreasonable, and protect their margins."
-        image={heroConstruction}
+        image={constructionAsset.url}
+        imageAlt="Construction Lawyer Melbourne – Renew Legal"
+        priority
       />
 
       <section className="container-prose py-24 lg:py-32">
-        <div className="max-w-3xl">
-          <div className="eyebrow">Watch for these</div>
-          <h2 className="mt-6 text-3xl lg:text-5xl text-navy">Common contract risks contractors overlook</h2>
-          <p className="mt-6 text-muted-foreground leading-relaxed">
-            Your fee should reflect the risks you are pricing. In Australia, upstream
-            risks are routinely passed down through the contracting chain.
-          </p>
+        <div className="grid lg:grid-cols-12 gap-12 items-start">
+          <div className="lg:col-span-7">
+            <div className="max-w-3xl">
+              <div className="eyebrow">Watch for these</div>
+              <h2 className="mt-6 text-3xl lg:text-5xl text-navy">Common contract risks contractors overlook</h2>
+              <p className="mt-6 text-muted-foreground leading-relaxed">Your fee should reflect the risks you are pricing. In Australia, upstream risks are routinely passed down through the contracting chain.</p>
+            </div>
+          </div>
+          <div className="lg:col-span-5">
+            <SiteImage src={tollingAsset.url} alt="Infrastructure project legal counsel Australia – Renew Legal" className="aspect-[4/3]" />
+          </div>
         </div>
         <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-border border border-border">
           {risks.map(([t, d], i) => (
