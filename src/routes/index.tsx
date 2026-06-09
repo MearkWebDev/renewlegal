@@ -186,13 +186,13 @@ function HomePage() {
 
       <section className="container-prose grid gap-12 py-28 lg:grid-cols-12 lg:gap-20 lg:py-40">
         <div className="lg:col-span-5">
-          <div className="relative">
-            <SiteImage
+          <div className="relative h-full min-h-[520px] lg:min-h-[640px]">
+            <img
               src={portraitAsset.url}
               alt="Ehren Terenyi, Principal of Renew Legal Melbourne"
-              className="aspect-[4/5]"
-              imageClassName="bg-stone object-contain p-6"
-              priority
+              loading="eager"
+              decoding="async"
+              className="absolute inset-0 h-full w-full object-cover object-[center_top]"
             />
             <div className="absolute -bottom-6 -right-6 hidden bg-gold px-6 py-4 text-navy-deep md:block">
               <div className="font-display text-2xl">Ehren Terenyi</div>
