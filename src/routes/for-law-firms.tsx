@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/PageHero";
 import { CtaBand } from "@/components/site/CtaBand";
-import officeAsset from "@/assets/renew-legal-premium-law-office.webp.asset.json";
+import { SiteImage } from "@/components/site/SiteImage";
+import automationAsset from "@/assets/renew-legal-project-automation-factory.png.asset.json";
+import portraitAsset from "@/assets/ehren-terenyi-renew-legal-portrait-2.png.asset.json";
 
 const faqs = [
   { q: "Can Renew Legal join our team for a single matter?", a: "Yes. There is no minimum engagement term. Renew Legal can join your team for a single matter, a defined project period, or an ongoing arrangement entirely at your discretion. You pay only for client-billable work actually performed." },
@@ -19,7 +21,7 @@ export const Route = createFileRoute("/for-law-firms")({
       { property: "og:title", content: "Specialist Construction Law Consultant for Law Firms" },
       { property: "og:description", content: "Bring in Renew Legal as a specialist resource — top-tier standards without the employment or overhead of a permanent hire." },
       { property: "og:url", content: "/for-law-firms" },
-      { property: "og:image", content: officeAsset.url },
+      { property: "og:image", content: automationAsset.url },
     ],
     links: [{ rel: "canonical", href: "/for-law-firms" }],
     scripts: [{
@@ -49,18 +51,44 @@ function Page() {
         eyebrow="For Law Firms"
         title={<>Specialist construction law consultant for law firms</>}
         intro="Rather than referring a specialist matter away, bring Renew Legal in as a specialist resource. Ehren Terenyi works alongside your team — under your direction, on your time-recording system, to the standard of a top-tier Special Counsel — without the employment, overhead or long-term commitment of a permanent hire."
-        image={officeAsset.url}
-        imageAlt="Premium law office for construction law consultant Melbourne"
+        image={automationAsset.url}
+        imageAlt="Official Renew Legal technology integration project photograph"
         priority
       />
 
       <section className="container-prose py-24 lg:py-32">
-        <div className="grid lg:grid-cols-12 gap-12">
+        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-4">
+            <SiteImage
+              src={portraitAsset.url}
+              alt="Ehren Terenyi, construction law consultant for law firms"
+              className="aspect-[4/5] max-w-sm"
+              imageClassName="bg-stone object-contain p-6"
+            />
+          </div>
+          <div className="lg:col-span-8">
+            <div className="eyebrow">Principal-led support</div>
+            <h2 className="mt-6 text-3xl text-navy lg:text-5xl">A direct specialist resource for your team</h2>
+            <div className="gold-rule mt-8" />
+            <div className="mt-8 space-y-6 leading-relaxed text-foreground/80">
+              <p>
+                Law firms engage Renew Legal because clients need genuine specialist capability, not just extra hands. Ehren Terenyi joins your matter as an experienced senior construction and renewables lawyer who can work independently, integrate quickly, and communicate with partners and clients at a top-tier standard.
+              </p>
+              <p>
+                The arrangement stays flexible: single matters, overflow support, secondments and fixed-period cover. Your firm retains the client relationship while gaining immediate access to specialist project and disputes expertise.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="container-prose py-24 lg:py-32">
+        <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <div className="eyebrow">How it works</div>
-            <h2 className="mt-6 text-3xl lg:text-5xl text-navy">The consultant model</h2>
+            <h2 className="mt-6 text-3xl text-navy lg:text-5xl">The consultant model</h2>
           </div>
-          <div className="lg:col-span-7 space-y-8">
+          <div className="space-y-8 lg:col-span-7">
             {[
               ["Rate structure", "You set the charge-out rate at which you bill your client. Renew Legal charges your firm at the rate set out on the Rates page. Firms routinely bill at Special Counsel level."],
               ["Cost model", "You only pay for client-billable work actually performed — no employment costs, no superannuation, no overhead. When you say stop, you incur no further cost."],
@@ -69,8 +97,8 @@ function Page() {
               ["Quality standard", "All work is performed to the standard expected of a senior fee earner at a top-tier Australian law firm."],
             ].map(([t, d]) => (
               <div key={t} className="border-b border-border pb-8">
-                <h3 className="text-xl text-navy font-display">{t}</h3>
-                <p className="mt-3 text-muted-foreground leading-relaxed">{d}</p>
+                <h3 className="font-display text-xl text-navy">{t}</h3>
+                <p className="mt-3 leading-relaxed text-muted-foreground">{d}</p>
               </div>
             ))}
           </div>
@@ -81,33 +109,33 @@ function Page() {
         <div className="container-prose py-24 lg:py-32">
           <div className="max-w-3xl">
             <div className="eyebrow !text-gold-soft">When to use us</div>
-            <h2 className="mt-6 text-3xl lg:text-5xl text-white">When to bring Renew Legal in</h2>
+            <h2 className="mt-6 text-3xl text-white lg:text-5xl">When to bring Renew Legal in</h2>
           </div>
           <div className="mt-14 divide-y divide-white/15 border-y border-white/15">
             {situations.map(([s, w, d]) => (
-              <div key={s} className="grid md:grid-cols-12 gap-6 py-8">
-                <div className="md:col-span-4 text-lg text-gold-soft font-display">{s}</div>
-                <div className="md:col-span-6 text-white/75 leading-relaxed">{w}</div>
-                <div className="md:col-span-2 text-xs tracking-[0.18em] uppercase text-white/50 md:text-right">{d}</div>
+              <div key={s} className="grid gap-6 py-8 md:grid-cols-12">
+                <div className="font-display text-lg text-gold-soft md:col-span-4">{s}</div>
+                <div className="leading-relaxed text-white/78 md:col-span-6">{w}</div>
+                <div className="text-xs uppercase tracking-[0.18em] text-white/55 md:col-span-2 md:text-right">{d}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="container-prose py-24 lg:py-32 grid lg:grid-cols-12 gap-12">
+      <section className="container-prose grid gap-12 py-24 lg:grid-cols-12 lg:py-32">
         <div className="lg:col-span-4">
           <div className="eyebrow">Common questions</div>
-          <h2 className="mt-6 text-3xl lg:text-4xl text-navy">For law firms — FAQ</h2>
+          <h2 className="mt-6 text-3xl text-navy lg:text-4xl">For law firms — FAQ</h2>
         </div>
-        <div className="lg:col-span-8 divide-y divide-border border-y border-border">
+        <div className="divide-y divide-border border-y border-border lg:col-span-8">
           {faqs.map((f, i) => (
             <details key={i} className="group py-6">
-              <summary className="flex items-start justify-between gap-6 cursor-pointer list-none">
-                <h3 className="text-lg lg:text-xl text-navy font-display">{f.q}</h3>
-                <span className="text-gold text-2xl leading-none transition-transform group-open:rotate-45">+</span>
+              <summary className="flex cursor-pointer list-none items-start justify-between gap-6">
+                <h3 className="font-display text-lg text-navy lg:text-xl">{f.q}</h3>
+                <span className="text-2xl leading-none text-gold transition-transform group-open:rotate-45">+</span>
               </summary>
-              <p className="mt-4 text-muted-foreground leading-relaxed">{f.a}</p>
+              <p className="mt-4 leading-relaxed text-muted-foreground">{f.a}</p>
             </details>
           ))}
         </div>

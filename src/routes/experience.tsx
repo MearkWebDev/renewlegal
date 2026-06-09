@@ -2,9 +2,12 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/PageHero";
 import { CtaBand } from "@/components/site/CtaBand";
 import { SiteImage } from "@/components/site/SiteImage";
-import windFarmAsset from "@/assets/renew-legal-wind-farm.webp.asset.json";
-import solarFarmAsset from "@/assets/renew-legal-solar-farm.webp.asset.json";
-import constructionAsset from "@/assets/renew-legal-construction-project.webp.asset.json";
+import transmissionAsset from "@/assets/renew-legal-project-transmission-lines.png.asset.json";
+import windFarmAsset from "@/assets/renew-legal-project-wind-farm.png.asset.json";
+import constructionAsset from "@/assets/renew-legal-project-construction-site.png.asset.json";
+import tollRoadAsset from "@/assets/renew-legal-project-toll-road.png.asset.json";
+import automationAsset from "@/assets/renew-legal-project-automation-factory.png.asset.json";
+import portraitAsset from "@/assets/ehren-terenyi-renew-legal-portrait-2.png.asset.json";
 
 export const Route = createFileRoute("/experience")({
   head: () => ({
@@ -14,7 +17,7 @@ export const Route = createFileRoute("/experience")({
       { property: "og:title", content: "Construction & Renewables Project Experience — Renew Legal" },
       { property: "og:description", content: "Representative project experience across construction, renewables, infrastructure and technology integration." },
       { property: "og:url", content: "/experience" },
-      { property: "og:image", content: windFarmAsset.url },
+      { property: "og:image", content: transmissionAsset.url },
     ],
     links: [{ rel: "canonical", href: "/experience" }],
   }),
@@ -78,30 +81,56 @@ function Page() {
         eyebrow="Project Experience"
         title={<>Construction & renewables project experience — Australia & Asia Pacific</>}
         intro="A representative selection of project experience. Ehren Terenyi has delivered legal advice on more than 6 GW of renewables and on major construction, infrastructure and technology integration projects."
-        image={windFarmAsset.url}
-        imageAlt="Renewables Project Legal Counsel Australia"
+        image={transmissionAsset.url}
+        imageAlt="Official Renew Legal transmission infrastructure project image"
         priority
       />
 
-      <div className="container-prose py-24 lg:py-32 space-y-16">
+      <div className="container-prose space-y-16 py-24 lg:py-32">
+        <section className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-4">
+            <SiteImage
+              src={portraitAsset.url}
+              alt="Ehren Terenyi, Principal of Renew Legal"
+              className="aspect-[4/5] max-w-sm"
+              imageClassName="bg-stone object-contain p-6"
+            />
+          </div>
+          <div className="lg:col-span-8">
+            <div className="eyebrow">Principal-led experience</div>
+            <h2 className="mt-6 text-3xl text-navy lg:text-5xl">Real projects, direct senior involvement</h2>
+            <div className="gold-rule mt-8" />
+            <div className="mt-8 space-y-6 text-lg leading-relaxed text-foreground/80">
+              <p>
+                Renew Legal's experience is grounded in actual project delivery across construction, renewables, infrastructure and complex technology integration. That depth comes from acting for owners, developers, contractors, OEMs, financiers and in-house project teams — not from a generic advisory model.
+              </p>
+              <p>
+                Every engagement remains principal-led. Clients work directly with Ehren Terenyi, drawing on top-tier legal training, commercial project experience and practical contract administration insight from live projects in Australia and across Asia Pacific.
+              </p>
+            </div>
+          </div>
+        </section>
+
         <div className="grid gap-6 md:grid-cols-2">
-          <SiteImage src={solarFarmAsset.url} alt="Solar farm legal counsel Australia – Renew Legal" className="aspect-[16/10]" />
-          <SiteImage src={constructionAsset.url} alt="EPC Contract Lawyer Melbourne – Renew Legal" className="aspect-[16/10]" />
+          <SiteImage src={windFarmAsset.url} alt="Official Renew Legal wind farm project photograph" className="aspect-[16/10]" />
+          <SiteImage src={constructionAsset.url} alt="Official Renew Legal construction project site photograph" className="aspect-[16/10]" />
+          <SiteImage src={tollRoadAsset.url} alt="Official Renew Legal tolling infrastructure project photograph" className="aspect-[16/10]" />
+          <SiteImage src={automationAsset.url} alt="Official Renew Legal automation and technology integration project photograph" className="aspect-[16/10]" />
         </div>
 
         {sections.map((s, idx) => (
-          <section key={s.h} className="grid lg:grid-cols-12 gap-12">
+          <section key={s.h} className="grid gap-12 lg:grid-cols-12">
             <div className="lg:col-span-4">
               <div className="text-xs tracking-[0.22em] text-gold">0{idx + 1}</div>
-              <h2 className="mt-4 text-2xl lg:text-4xl text-navy">{s.h}</h2>
+              <h2 className="mt-4 text-2xl text-navy lg:text-4xl">{s.h}</h2>
             </div>
             <div className="lg:col-span-8">
-              <p className="text-lg text-foreground/80 leading-relaxed">{s.lead}</p>
+              <p className="text-lg leading-relaxed text-foreground/80">{s.lead}</p>
               <ul className="mt-8 space-y-4">
                 {s.items.map((it) => (
                   <li key={it} className="flex gap-4 border-b border-border pb-4">
-                    <span className="text-gold mt-1">—</span>
-                    <span className="text-foreground/80 leading-relaxed">{it}</span>
+                    <span className="mt-1 text-gold">—</span>
+                    <span className="leading-relaxed text-foreground/80">{it}</span>
                   </li>
                 ))}
               </ul>

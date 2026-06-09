@@ -4,7 +4,7 @@ import { Logo } from "@/components/site/Logo";
 import { SiteImage } from "@/components/site/SiteImage";
 import { Mail, Phone, MapPin, Linkedin, Clock } from "lucide-react";
 import officeAsset from "@/assets/renew-legal-premium-law-office.webp.asset.json";
-import portraitAsset from "@/assets/ehren-terenyi-renew-legal.webp.asset.json";
+import portraitAsset from "@/assets/ehren-terenyi-renew-legal-portrait-2.png.asset.json";
 import logoAsset from "@/assets/renew-legal-logo.png.asset.json";
 
 export const Route = createFileRoute("/contact")({
@@ -60,17 +60,18 @@ function Page() {
         intro="The best way to find out whether Renew Legal can help with your matter is a short conversation. Ehren responds personally to all enquiries within one business day."
         image={officeAsset.url}
         imageAlt="Renew Legal Melbourne office consultation environment"
+        priority
       />
 
-      <section className="container-prose py-24 lg:py-32 grid lg:grid-cols-12 gap-16">
+      <section className="container-prose grid gap-16 py-24 lg:grid-cols-12 lg:py-32">
         <div className="lg:col-span-5">
-          <div className="w-[160px] mb-10">
+          <div className="mb-10 w-[160px]">
             <Logo variant="dark" className="max-h-10" />
           </div>
           <div className="grid gap-8 md:grid-cols-[1.1fr_0.9fr] lg:grid-cols-1">
             <div>
               <div className="eyebrow">Direct contact</div>
-              <h2 className="mt-6 text-3xl lg:text-4xl text-navy">Ehren Terenyi — Principal</h2>
+              <h2 className="mt-6 text-3xl text-navy lg:text-4xl">Ehren Terenyi — Principal</h2>
               <div className="gold-rule mt-8" />
 
               <div className="mt-10 space-y-6">
@@ -96,16 +97,16 @@ function Page() {
             </div>
             <SiteImage
               src={portraitAsset.url}
-              alt="Renew Legal Melbourne Office – Principal portrait"
+              alt="Ehren Terenyi, Principal of Renew Legal"
               className="aspect-[4/5] max-w-sm"
-              imageClassName="object-contain bg-stone p-6"
+              imageClassName="bg-stone object-contain p-6"
             />
           </div>
         </div>
 
         <div className="lg:col-span-7">
           <form
-            className="bg-stone p-8 lg:p-12 space-y-6"
+            className="space-y-6 bg-stone p-8 lg:p-12"
             onSubmit={(e) => {
               e.preventDefault();
               alert("Thank you. Ehren will respond within one business day.");
@@ -113,7 +114,7 @@ function Page() {
             }}
           >
             <h2 className="font-display text-2xl text-navy">Send an enquiry</h2>
-            <div className="grid md:grid-cols-2 gap-4">
+            <div className="grid gap-4 md:grid-cols-2">
               <Field label="Your name *" name="name" required />
               <Field label="Company or firm" name="company" />
               <Field label="Email *" name="email" type="email" required />
@@ -121,13 +122,13 @@ function Page() {
             </div>
             <SelectField label="Matter type" name="type" options={["Contract review", "Claims advice", "Dispute", "Law firm enquiry", "Other"]} />
             <div>
-              <label className="text-xs tracking-[0.18em] uppercase text-navy">Brief description *</label>
+              <label className="text-xs uppercase tracking-[0.18em] text-navy">Brief description *</label>
               <textarea
                 name="message"
                 required
                 rows={5}
                 maxLength={500}
-                className="mt-2 w-full bg-white border border-border px-4 py-3 focus:border-gold focus:outline-none transition-colors"
+                className="mt-2 w-full border border-border bg-white px-4 py-3 transition-colors focus:border-gold focus:outline-none"
               />
             </div>
             <button type="submit" className="btn-primary w-full md:w-auto">
@@ -146,10 +147,10 @@ function Page() {
 function ContactRow({ Icon, label, children }: { Icon: typeof Mail; label: string; children: React.ReactNode }) {
   return (
     <div className="flex gap-5 border-b border-border pb-6">
-      <div className="text-gold mt-1"><Icon size={18} /></div>
+      <div className="mt-1 text-gold"><Icon size={18} /></div>
       <div>
-        <div className="text-xs tracking-[0.2em] uppercase text-muted-foreground">{label}</div>
-        <div className="mt-1 text-foreground leading-relaxed">{children}</div>
+        <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground">{label}</div>
+        <div className="mt-1 leading-relaxed text-foreground">{children}</div>
       </div>
     </div>
   );
@@ -158,12 +159,12 @@ function ContactRow({ Icon, label, children }: { Icon: typeof Mail; label: strin
 function Field({ label, name, type = "text", required }: { label: string; name: string; type?: string; required?: boolean }) {
   return (
     <div>
-      <label className="text-xs tracking-[0.18em] uppercase text-navy">{label}</label>
+      <label className="text-xs uppercase tracking-[0.18em] text-navy">{label}</label>
       <input
         name={name}
         type={type}
         required={required}
-        className="mt-2 w-full bg-white border border-border px-4 py-3 focus:border-gold focus:outline-none transition-colors"
+        className="mt-2 w-full border border-border bg-white px-4 py-3 transition-colors focus:border-gold focus:outline-none"
       />
     </div>
   );
@@ -172,8 +173,8 @@ function Field({ label, name, type = "text", required }: { label: string; name: 
 function SelectField({ label, name, options }: { label: string; name: string; options: string[] }) {
   return (
     <div>
-      <label className="text-xs tracking-[0.18em] uppercase text-navy">{label}</label>
-      <select name={name} className="mt-2 w-full bg-white border border-border px-4 py-3 focus:border-gold focus:outline-none transition-colors">
+      <label className="text-xs uppercase tracking-[0.18em] text-navy">{label}</label>
+      <select name={name} className="mt-2 w-full border border-border bg-white px-4 py-3 transition-colors focus:border-gold focus:outline-none">
         <option value="">Select...</option>
         {options.map((o) => <option key={o}>{o}</option>)}
       </select>
