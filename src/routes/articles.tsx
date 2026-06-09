@@ -12,7 +12,7 @@ export const Route = createFileRoute("/articles")({
       { property: "og:title", content: "Construction Law Insights — Renew Legal" },
       { property: "og:description", content: "Practical articles on construction law, EPC, SOP, bank guarantees, settlement releases and renewables disputes." },
       { property: "og:url", content: "/articles" },
-      { property: "og:image", content: portraitHeroAsset.url },
+      { property: "og:image", content: editorialHeroAsset.url },
     ],
     links: [{ rel: "canonical", href: "/articles" }],
   }),
