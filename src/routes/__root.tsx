@@ -13,6 +13,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Header } from "../components/site/Header";
 import { Footer } from "../components/site/Footer";
+import logoAsset from "@/assets/renew-legal-logo.png.asset.json";
 
 function NotFoundComponent() {
   return (
@@ -61,6 +62,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     links: [
       { rel: "stylesheet", href: appCss },
+      { rel: "icon", type: "image/png", href: logoAsset.url },
+      { rel: "apple-touch-icon", href: logoAsset.url },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
@@ -79,6 +82,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           description:
             "Boutique construction, renewables and technology integration law firm based in Melbourne, Australia.",
           url: "/",
+          logo: logoAsset.url,
+          image: [logoAsset.url],
           telephone: "+61 418 342 682",
           email: "ehren@renewlegal.com.au",
           founder: { "@type": "Person", name: "Ehren Terenyi" },
@@ -128,3 +133,4 @@ function RootComponent() {
     </QueryClientProvider>
   );
 }
+

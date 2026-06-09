@@ -1,12 +1,13 @@
 import { Link } from "@tanstack/react-router";
+import { Logo } from "@/components/site/Logo";
 
 export function Footer() {
   return (
     <footer className="bg-navy text-white/80 mt-32">
       <div className="container-prose py-20 grid gap-12 lg:grid-cols-4">
         <div className="lg:col-span-2">
-          <div className="font-display text-3xl text-white">
-            Renew<span className="text-gold">.</span>Legal
+          <div className="w-[172px] lg:w-[210px]">
+            <Logo variant="light" className="max-h-12" />
           </div>
           <p className="mt-6 max-w-md text-sm leading-relaxed text-white/65">
             Specialist construction, renewables, infrastructure and technology
@@ -48,3 +49,4 @@ export function Footer() {
     </footer>
   );
 }
+
