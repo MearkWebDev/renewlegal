@@ -14,6 +14,8 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Header } from "../components/site/Header";
 import { Footer } from "../components/site/Footer";
 import logoAsset from "@/assets/renew-legal-logo.png.asset.json";
+import windFarmAsset from "@/assets/renew-legal-project-wind-farm.png.asset.json";
+
 
 function NotFoundComponent() {
   return (
