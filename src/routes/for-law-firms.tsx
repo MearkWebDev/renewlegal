@@ -112,18 +112,27 @@ function Page() {
         </div>
       </section>
 
-      <section className="bg-navy text-white">
-        <div className="container-prose py-24 lg:py-32">
+      <section className="relative overflow-hidden bg-navy text-white">
+        <img
+          src={constructionAsset.url}
+          alt=""
+          aria-hidden
+          loading="lazy"
+          decoding="async"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-navy/70" aria-hidden />
+        <div className="container-prose relative py-24 lg:py-32">
           <div className="max-w-3xl">
             <div className="eyebrow !text-gold-soft">When to use us</div>
             <h2 className="mt-6 text-3xl text-white lg:text-5xl">When to bring Renew Legal in</h2>
           </div>
-          <div className="mt-14 divide-y divide-white/15 border-y border-white/15">
+          <div className="mt-14 divide-y divide-white/20 border-y border-white/20">
             {situations.map(([s, w, d]) => (
               <div key={s} className="grid gap-6 py-8 md:grid-cols-12">
                 <div className="font-display text-lg text-gold-soft md:col-span-4">{s}</div>
-                <div className="leading-relaxed text-white/78 md:col-span-6">{w}</div>
-                <div className="text-xs uppercase tracking-[0.18em] text-white/55 md:col-span-2 md:text-right">{d}</div>
+                <div className="leading-relaxed text-white md:col-span-6">{w}</div>
+                <div className="text-xs uppercase tracking-[0.18em] text-white/70 md:col-span-2 md:text-right">{d}</div>
               </div>
             ))}
           </div>
