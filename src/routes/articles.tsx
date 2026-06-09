@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/PageHero";
 import { CtaBand } from "@/components/site/CtaBand";
-import officeAsset from "@/assets/renew-legal-premium-law-office.webp.asset.json";
+import { SiteImage } from "@/components/site/SiteImage";
+import portraitHeroAsset from "@/assets/ehren-terenyi-renew-legal-portrait-2.png.asset.json";
+import portraitAsset from "@/assets/ehren-terenyi-renew-legal.webp.asset.json";
 
 export const Route = createFileRoute("/articles")({
   head: () => ({
@@ -11,7 +13,7 @@ export const Route = createFileRoute("/articles")({
       { property: "og:title", content: "Construction Law Insights — Renew Legal" },
       { property: "og:description", content: "Practical articles on construction law, EPC, SOP, bank guarantees, settlement releases and renewables disputes." },
       { property: "og:url", content: "/articles" },
-      { property: "og:image", content: officeAsset.url },
+      { property: "og:image", content: portraitHeroAsset.url },
     ],
     links: [{ rel: "canonical", href: "/articles" }],
   }),
@@ -46,22 +48,50 @@ function Page() {
         eyebrow="Insights"
         title={<>Construction law insights — practical articles</>}
         intro="Plain-English articles on construction law, renewables contracts and legal strategy — written for contractors, project managers and in-house lawyers who want practical, usable information."
-        image={officeAsset.url}
-        imageAlt="Professional legal publishing workspace – Renew Legal"
+        image={portraitHeroAsset.url}
+        imageAlt="Ehren Terenyi, author of Renew Legal articles"
+        imageClassName="object-[center_18%]"
+        priority
       />
 
       <section className="container-prose py-24 lg:py-32">
-        <div className="flex items-end justify-between mb-12">
-          <h2 className="text-3xl lg:text-4xl text-navy">Published</h2>
-          <div className="text-xs tracking-[0.2em] uppercase text-muted-foreground">{published.length} articles</div>
+        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-4">
+            <SiteImage
+              src={portraitAsset.url}
+              alt="Ehren Terenyi writing and publishing thought leadership for Renew Legal"
+              className="aspect-[4/5] max-w-sm"
+              imageClassName="bg-stone object-contain p-6"
+            />
+          </div>
+          <div className="lg:col-span-8">
+            <div className="eyebrow">Thought leadership</div>
+            <h2 className="mt-6 text-3xl text-navy lg:text-5xl">Practical commentary from a specialist construction lawyer</h2>
+            <div className="gold-rule mt-8" />
+            <div className="mt-8 space-y-6 leading-relaxed text-foreground/80">
+              <p>
+                Renew Legal articles are written by Ehren Terenyi and focus on the questions project teams, contractors and law firms actually ask in live matters. The emphasis is practical: risk allocation, dispute strategy, contract administration and the real commercial consequences of legal drafting.
+              </p>
+              <p>
+                The aim is not generic content marketing. It is useful, decision-ready commentary grounded in specialist experience across construction, renewables, infrastructure and technology integration projects.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="container-prose py-24 lg:py-16">
+        <div className="mb-12 flex items-end justify-between">
+          <h2 className="text-3xl text-navy lg:text-4xl">Published</h2>
+          <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground">{published.length} articles</div>
         </div>
         <div className="divide-y divide-border border-y border-border">
           {published.map((a) => (
-            <article key={a.t} className="grid md:grid-cols-12 gap-6 py-10 group hover:bg-stone transition-colors px-4 -mx-4">
-              <div className="md:col-span-2 text-xs tracking-[0.2em] uppercase text-gold pt-2">{a.d}</div>
+            <article key={a.t} className="group -mx-4 grid gap-6 px-4 py-10 transition-colors hover:bg-stone md:grid-cols-12">
+              <div className="pt-2 text-xs uppercase tracking-[0.2em] text-gold md:col-span-2">{a.d}</div>
               <div className="md:col-span-10">
-                <h3 className="text-2xl lg:text-3xl text-navy font-display group-hover:text-gold transition-colors">{a.t}</h3>
-                <p className="mt-3 text-muted-foreground leading-relaxed max-w-3xl">{a.e}</p>
+                <h3 className="font-display text-2xl text-navy transition-colors group-hover:text-gold lg:text-3xl">{a.t}</h3>
+                <p className="mt-3 max-w-3xl leading-relaxed text-muted-foreground">{a.e}</p>
               </div>
             </article>
           ))}
@@ -72,16 +102,16 @@ function Page() {
         <div className="container-prose py-24 lg:py-32">
           <div className="max-w-3xl">
             <div className="eyebrow">Coming soon</div>
-            <h2 className="mt-6 text-3xl lg:text-5xl text-navy">Publishing queue</h2>
-            <p className="mt-6 text-muted-foreground leading-relaxed">
+            <h2 className="mt-6 text-3xl text-navy lg:text-5xl">Publishing queue</h2>
+            <p className="mt-6 leading-relaxed text-muted-foreground">
               The next ten articles, scheduled for publication. Each addresses a high-intent question contractors and project teams routinely ask.
             </p>
           </div>
-          <ol className="mt-14 grid md:grid-cols-2 gap-x-12 gap-y-2 max-w-5xl">
+          <ol className="mt-14 grid max-w-5xl gap-x-12 gap-y-2 md:grid-cols-2">
             {queue.map((t, i) => (
-              <li key={t} className="flex gap-6 py-5 border-b border-border">
-                <span className="text-xs tracking-[0.2em] text-gold pt-1">{String(i + 1).padStart(2, "0")}</span>
-                <span className="text-foreground/85 font-display text-lg">{t}</span>
+              <li key={t} className="flex gap-6 border-b border-border py-5">
+                <span className="pt-1 text-xs text-gold tracking-[0.2em]">{String(i + 1).padStart(2, "0")}</span>
+                <span className="font-display text-lg text-foreground/85">{t}</span>
               </li>
             ))}
           </ol>

@@ -2,8 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/PageHero";
 import { CtaBand } from "@/components/site/CtaBand";
 import { SiteImage } from "@/components/site/SiteImage";
-import constructionAsset from "@/assets/renew-legal-construction-project.webp.asset.json";
-import tollingAsset from "@/assets/renew-legal-infrastructure-tolling.webp.asset.json";
+import constructionAsset from "@/assets/renew-legal-project-construction-site.png.asset.json";
+import tollRoadAsset from "@/assets/renew-legal-project-toll-road.png.asset.json";
 
 const faqs = [
   { q: "What should I look for when reviewing a construction contract?", a: "Key issues include: whether there is a liability cap (and whether carve-outs eliminate its value), whether consequential loss is excluded, the scope of indemnities, EOT entitlements and force majeure, defects liability, payment and security terms, termination rights, and dispute resolution. AS 4000, AS 4902 and ABIC forms have been progressively amended by principals to be more employer-friendly — always read special conditions carefully." },
@@ -64,29 +64,29 @@ function Page() {
         title={<>External legal counsel for construction contractors — Melbourne</>}
         intro="The draft contract from your head contractor needs to be signed this week. Price, dates and scope look acceptable — but did you intend to take on all the client's risks? Renew Legal helps contractors identify what matters, push back on what is unreasonable, and protect their margins."
         image={constructionAsset.url}
-        imageAlt="Construction Lawyer Melbourne – Renew Legal"
+        imageAlt="Official Renew Legal construction project photograph"
         priority
       />
 
       <section className="container-prose py-24 lg:py-32">
-        <div className="grid lg:grid-cols-12 gap-12 items-start">
+        <div className="grid items-start gap-12 lg:grid-cols-12">
           <div className="lg:col-span-7">
             <div className="max-w-3xl">
               <div className="eyebrow">Watch for these</div>
-              <h2 className="mt-6 text-3xl lg:text-5xl text-navy">Common contract risks contractors overlook</h2>
-              <p className="mt-6 text-muted-foreground leading-relaxed">Your fee should reflect the risks you are pricing. In Australia, upstream risks are routinely passed down through the contracting chain.</p>
+              <h2 className="mt-6 text-3xl text-navy lg:text-5xl">Common contract risks contractors overlook</h2>
+              <p className="mt-6 leading-relaxed text-muted-foreground">Your fee should reflect the risks you are pricing. In Australia, upstream risks are routinely passed down through the contracting chain.</p>
             </div>
           </div>
           <div className="lg:col-span-5">
-            <SiteImage src={tollingAsset.url} alt="Infrastructure project legal counsel Australia – Renew Legal" className="aspect-[4/3]" />
+            <SiteImage src={tollRoadAsset.url} alt="Official Renew Legal tolling infrastructure photograph" className="aspect-[4/3]" />
           </div>
         </div>
-        <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-border border border-border">
+        <div className="mt-16 grid gap-px border border-border bg-border md:grid-cols-2 lg:grid-cols-3">
           {risks.map(([t, d], i) => (
             <article key={t} className="bg-white p-8">
               <div className="text-xs tracking-[0.2em] text-gold">RISK 0{i + 1}</div>
-              <h3 className="mt-4 text-xl text-navy font-display">{t}</h3>
-              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{d}</p>
+              <h3 className="mt-4 font-display text-xl text-navy">{t}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{d}</p>
             </article>
           ))}
         </div>
@@ -96,32 +96,32 @@ function Page() {
         <div className="container-prose py-24 lg:py-32">
           <div className="max-w-3xl">
             <div className="eyebrow">Services for contractors</div>
-            <h2 className="mt-6 text-3xl lg:text-5xl text-navy">How Renew Legal can help</h2>
+            <h2 className="mt-6 text-3xl text-navy lg:text-5xl">How Renew Legal can help</h2>
           </div>
-          <div className="mt-14 grid md:grid-cols-2 gap-x-16 gap-y-10">
+          <div className="mt-14 grid gap-x-16 gap-y-10 md:grid-cols-2">
             {services.map(([t, d]) => (
               <div key={t} className="border-l-2 border-gold pl-6">
-                <h3 className="text-lg text-navy font-display">{t}</h3>
-                <p className="mt-2 text-muted-foreground leading-relaxed">{d}</p>
+                <h3 className="font-display text-lg text-navy">{t}</h3>
+                <p className="mt-2 leading-relaxed text-muted-foreground">{d}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="container-prose py-24 lg:py-32 grid lg:grid-cols-12 gap-12">
+      <section className="container-prose grid gap-12 py-24 lg:grid-cols-12 lg:py-32">
         <div className="lg:col-span-4">
           <div className="eyebrow">Common questions</div>
-          <h2 className="mt-6 text-3xl lg:text-4xl text-navy">For contractors — FAQ</h2>
+          <h2 className="mt-6 text-3xl text-navy lg:text-4xl">For contractors — FAQ</h2>
         </div>
-        <div className="lg:col-span-8 divide-y divide-border border-y border-border">
+        <div className="divide-y divide-border border-y border-border lg:col-span-8">
           {faqs.map((f, i) => (
             <details key={i} className="group py-6">
-              <summary className="flex items-start justify-between gap-6 cursor-pointer list-none">
-                <h3 className="text-lg lg:text-xl text-navy font-display">{f.q}</h3>
-                <span className="text-gold text-2xl leading-none transition-transform group-open:rotate-45">+</span>
+              <summary className="flex cursor-pointer list-none items-start justify-between gap-6">
+                <h3 className="font-display text-lg text-navy lg:text-xl">{f.q}</h3>
+                <span className="text-2xl leading-none text-gold transition-transform group-open:rotate-45">+</span>
               </summary>
-              <p className="mt-4 text-muted-foreground leading-relaxed">{f.a}</p>
+              <p className="mt-4 leading-relaxed text-muted-foreground">{f.a}</p>
             </details>
           ))}
         </div>

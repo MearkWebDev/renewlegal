@@ -3,9 +3,9 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { CtaBand } from "@/components/site/CtaBand";
 import { SiteImage } from "@/components/site/SiteImage";
 import { useEffect, useState } from "react";
-import windFarmAsset from "@/assets/renew-legal-wind-farm.webp.asset.json";
-import constructionAsset from "@/assets/renew-legal-construction-project.webp.asset.json";
-import officeAsset from "@/assets/renew-legal-premium-law-office.webp.asset.json";
+import windFarmAsset from "@/assets/renew-legal-project-wind-farm.png.asset.json";
+import constructionAsset from "@/assets/renew-legal-project-construction-site.png.asset.json";
+import automationAsset from "@/assets/renew-legal-project-automation-factory.png.asset.json";
 import portraitAsset from "@/assets/ehren-terenyi-renew-legal.webp.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -39,7 +39,7 @@ export const Route = createFileRoute("/")({
           "@type": "ImageObject",
           contentUrl: windFarmAsset.url,
           name: "Renewables Project Legal Counsel Australia",
-          description: "Wind farm project image representing Renew Legal's Australian renewables and EPC legal counsel experience.",
+          description: "Official Renew Legal wind farm project image representing Australian renewables and EPC legal counsel experience.",
         }),
       },
     ],
@@ -53,7 +53,7 @@ const slides = [
     title: "Construction, Renewables & Technology Lawyers — Melbourne",
     body: "Specialist legal counsel for EPC, D&C, BESS, wind, solar and technology integration projects. Ehren Terenyi has advised on more than 6 GW of renewables projects across Australia and Asia Pacific.",
     image: windFarmAsset.url,
-    alt: "Renewables Project Legal Counsel Australia",
+    alt: "Official Renew Legal wind farm project in Australia",
     cta1: { label: "See our experience", to: "/experience" as const },
     cta2: { label: "Book a 15-min call", to: "/contact" as const },
   },
@@ -62,18 +62,18 @@ const slides = [
     title: "External Legal Counsel for Contractors — without the law firm overhead",
     body: "Contract review, security of payment, claims management and dispute resolution for Australian construction contractors. Fixed fees. No surprises.",
     image: constructionAsset.url,
-    alt: "Construction Lawyer Melbourne – Renew Legal",
+    alt: "Official Renew Legal construction project photograph",
     cta1: { label: "Legal help for contractors", to: "/for-contractors" as const },
     cta2: { label: "See our rates", to: "/rates" as const },
   },
   {
-    eyebrow: "03 — For Law Firms",
-    title: "Specialist Construction Consultant for Law Firms",
-    body: "Join your team as Special Counsel — construction, renewables and technology integration expertise on demand. Fixed cost, no employment obligations, top-tier standards.",
-    image: officeAsset.url,
-    alt: "Premium corporate law office interior for Renew Legal Melbourne",
-    cta1: { label: "Consultant services", to: "/for-law-firms" as const },
-    cta2: { label: "View rates", to: "/rates" as const },
+    eyebrow: "03 — Technology Integration",
+    title: "Specialist counsel for complex construction and technology projects",
+    body: "From automation facilities to project-critical technology integration, Renew Legal advises on technically complex contracts with senior, direct, commercial input from start to finish.",
+    image: automationAsset.url,
+    alt: "Official Renew Legal technology integration project image",
+    cta1: { label: "View project experience", to: "/experience" as const },
+    cta2: { label: "For law firms", to: "/for-law-firms" as const },
   },
 ];
 
@@ -115,7 +115,7 @@ function HomePage() {
           <div
             key={i}
             className={`absolute inset-0 transition-opacity duration-1000 ${
-              i === active ? "opacity-100" : "opacity-0 pointer-events-none"
+              i === active ? "opacity-100" : "pointer-events-none opacity-0"
             }`}
           >
             <img
@@ -123,23 +123,23 @@ function HomePage() {
               alt={s.alt}
               loading={i === 0 ? "eager" : "lazy"}
               decoding="async"
-              className="absolute inset-0 w-full h-full object-cover scale-105"
+              className="absolute inset-0 h-full w-full object-cover scale-105"
               style={{ animation: i === active ? "kenburns 12s ease-out forwards" : undefined }}
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-navy-deep/95 via-navy/80 to-navy/45" />
+            <div className="absolute inset-0 bg-gradient-to-br from-navy-deep/56 via-navy/34 to-navy/18" />
           </div>
         ))}
 
         <style>{`@keyframes kenburns { from { transform: scale(1.08); } to { transform: scale(1.18); } }`}</style>
 
-        <div className="relative h-full flex items-center">
+        <div className="relative flex h-full items-center">
           <div className="container-prose w-full">
             <div className="max-w-3xl">
               <div className="eyebrow !text-gold-soft">{slides[active].eyebrow}</div>
               <h1 className="mt-6 text-4xl md:text-6xl lg:text-7xl">{slides[active].title}</h1>
-              <p className="mt-8 max-w-xl text-lg text-white/80 leading-relaxed">{slides[active].body}</p>
+              <p className="mt-8 max-w-xl text-lg leading-relaxed text-white/88">{slides[active].body}</p>
               <div className="mt-12 flex flex-wrap gap-4">
-                <Link to={slides[active].cta1.to} className="btn-primary !bg-gold !border-gold !text-navy-deep hover:!bg-white hover:!border-white">
+                <Link to={slides[active].cta1.to} className="btn-primary !border-gold !bg-gold !text-navy-deep hover:!border-white hover:!bg-white">
                   {slides[active].cta1.label} <ArrowRight size={16} />
                 </Link>
                 <Link to={slides[active].cta2.to} className="btn-outline">
@@ -156,11 +156,11 @@ function HomePage() {
                     onClick={() => setActive(i)}
                     aria-label={`Slide ${i + 1}`}
                     className={`h-[2px] transition-all duration-500 ${
-                      i === active ? "w-16 bg-gold" : "w-8 bg-white/30 hover:bg-white/60"
+                      i === active ? "w-16 bg-gold" : "w-8 bg-white/40 hover:bg-white/70"
                     }`}
                   />
                 ))}
-                <span className="ml-4 text-xs tracking-[0.2em] text-white/50">0{active + 1} / 0{slides.length}</span>
+                <span className="ml-4 text-xs tracking-[0.2em] text-white/65">0{active + 1} / 0{slides.length}</span>
               </div>
             </div>
           </div>
@@ -168,7 +168,7 @@ function HomePage() {
       </section>
 
       <section className="bg-stone border-y border-border">
-        <div className="container-prose py-12 grid grid-cols-2 lg:grid-cols-5 gap-8 text-center">
+        <div className="container-prose grid grid-cols-2 gap-8 py-12 text-center lg:grid-cols-5">
           {[
             ["20+", "Years experience"],
             ["6 GW+", "Renewables delivered"],
@@ -177,24 +177,24 @@ function HomePage() {
             ["Melbourne", "Collins Street"],
           ].map(([k, v]) => (
             <div key={k}>
-              <div className="font-display text-3xl lg:text-4xl text-navy">{k}</div>
+              <div className="font-display text-3xl text-navy lg:text-4xl">{k}</div>
               <div className="mt-2 text-xs tracking-[0.18em] uppercase text-muted-foreground">{v}</div>
             </div>
           ))}
         </div>
       </section>
 
-      <section className="container-prose py-28 lg:py-40 grid lg:grid-cols-12 gap-12 lg:gap-20">
+      <section className="container-prose grid gap-12 py-28 lg:grid-cols-12 lg:gap-20 lg:py-40">
         <div className="lg:col-span-5">
           <div className="relative">
             <SiteImage
               src={portraitAsset.url}
               alt="Ehren Terenyi, Principal of Renew Legal Melbourne"
               className="aspect-[4/5]"
-              imageClassName="object-contain bg-stone p-6"
+              imageClassName="bg-stone object-contain p-6"
               priority
             />
-            <div className="absolute -bottom-6 -right-6 bg-gold text-navy-deep px-6 py-4 hidden md:block">
+            <div className="absolute -bottom-6 -right-6 hidden bg-gold px-6 py-4 text-navy-deep md:block">
               <div className="font-display text-2xl">Ehren Terenyi</div>
               <div className="text-xs tracking-[0.18em] uppercase">Principal</div>
             </div>
@@ -202,9 +202,9 @@ function HomePage() {
         </div>
         <div className="lg:col-span-7">
           <div className="eyebrow">About — Renew Legal</div>
-          <h2 className="mt-6 text-3xl lg:text-5xl text-navy">Specialist construction and renewables law — Melbourne</h2>
+          <h2 className="mt-6 text-3xl text-navy lg:text-5xl">Specialist construction and renewables law — Melbourne</h2>
           <div className="gold-rule mt-8" />
-          <div className="mt-8 space-y-6 text-foreground/80 leading-relaxed">
+          <div className="mt-8 space-y-6 leading-relaxed text-foreground/80">
             <p>
               Renew Legal is a boutique construction and renewables law practice founded by Ehren Terenyi in 2023. Ehren is a construction, infrastructure and technology integration lawyer with more than two decades of experience across boutique engineering firms, top-tier Australian law firms, international law firms, Federal Court Associate roles, and senior in-house commercial and legal counsel positions.
             </p>
@@ -220,17 +220,17 @@ function HomePage() {
 
       <section className="bg-stone">
         <div className="container-prose py-28 lg:py-36">
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16">
+          <div className="mb-16 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-2xl">
               <div className="eyebrow">What we do</div>
-              <h2 className="mt-6 text-3xl lg:text-5xl text-navy">Areas of specialisation</h2>
+              <h2 className="mt-6 text-3xl text-navy lg:text-5xl">Areas of specialisation</h2>
             </div>
-            <p className="lg:max-w-md text-muted-foreground leading-relaxed">
+            <p className="leading-relaxed text-muted-foreground lg:max-w-md">
               Deep technical knowledge of construction, renewables and technology integration — supported by commercial experience on every side of the table.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
+          <div className="grid gap-px bg-border md:grid-cols-2 lg:grid-cols-3">
             {[
               { n: "01", t: "Construction & Engineering", d: "D&C, EPC, EPCM, FIDIC, AS 4000/4902, side deeds, BOP packages, interface agreements." },
               { n: "02", t: "Renewables — Wind, Solar, BESS", d: "EPC, O&M, LTSA, TSA, development agreements, transmission line contracts." },
@@ -239,10 +239,10 @@ function HomePage() {
               { n: "05", t: "Disputes & Settlement", d: "Adjudication, mediation, expert determination, arbitration, litigation, SOP claims." },
               { n: "06", t: "Law Firm Consulting", d: "Special Counsel support, overflow, secondments, parental leave cover." },
             ].map((c) => (
-              <article key={c.n} className="bg-white p-10 lg:p-12 group hover:bg-navy hover:text-white transition-colors duration-500">
+              <article key={c.n} className="group bg-white p-10 transition-colors duration-500 hover:bg-navy hover:text-white lg:p-12">
                 <div className="text-xs tracking-[0.22em] text-gold">{c.n}</div>
-                <h3 className="mt-6 text-2xl text-navy group-hover:text-white transition-colors">{c.t}</h3>
-                <p className="mt-4 text-sm leading-relaxed text-muted-foreground group-hover:text-white/70 transition-colors">{c.d}</p>
+                <h3 className="mt-6 text-2xl text-navy transition-colors group-hover:text-white">{c.t}</h3>
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground transition-colors group-hover:text-white/70">{c.d}</p>
               </article>
             ))}
           </div>
@@ -252,9 +252,9 @@ function HomePage() {
       <section className="container-prose py-28 lg:py-40">
         <div className="max-w-3xl">
           <div className="eyebrow">Why Renew Legal</div>
-          <h2 className="mt-6 text-3xl lg:text-5xl text-navy">What makes us different</h2>
+          <h2 className="mt-6 text-3xl text-navy lg:text-5xl">What makes us different</h2>
         </div>
-        <div className="mt-16 grid md:grid-cols-2 gap-x-16 gap-y-12">
+        <div className="mt-16 grid gap-x-16 gap-y-12 md:grid-cols-2">
           {[
             ["Direct principal access", "Every matter handled personally by Ehren Terenyi — no junior handoffs, no case management system."],
             ["Fixed fees", "Agree the cost before work begins. No billing surprises. No hourly rate ambiguity."],
@@ -265,27 +265,27 @@ function HomePage() {
           ].map(([t, d]) => (
             <div key={t} className="border-l border-gold pl-6">
               <h3 className="text-xl text-navy">{t}</h3>
-              <p className="mt-3 text-muted-foreground leading-relaxed">{d}</p>
+              <p className="mt-3 leading-relaxed text-muted-foreground">{d}</p>
             </div>
           ))}
         </div>
       </section>
 
       <section className="bg-stone">
-        <div className="container-prose py-28 lg:py-36 grid lg:grid-cols-12 gap-12">
+        <div className="container-prose grid gap-12 py-28 lg:grid-cols-12 lg:py-36">
           <div className="lg:col-span-4">
             <div className="eyebrow">Frequently asked</div>
-            <h2 className="mt-6 text-3xl lg:text-5xl text-navy">Straight answers</h2>
+            <h2 className="mt-6 text-3xl text-navy lg:text-5xl">Straight answers</h2>
             <p className="mt-6 text-muted-foreground">Practical answers in plain English — no legalese.</p>
           </div>
-          <div className="lg:col-span-8 divide-y divide-border border-y border-border">
+          <div className="divide-y divide-border border-y border-border lg:col-span-8">
             {faqs.map((f, i) => (
               <details key={i} className="group py-6">
-                <summary className="flex items-start justify-between gap-6 cursor-pointer list-none">
-                  <h3 className="text-lg lg:text-xl text-navy font-display">{f.q}</h3>
-                  <span className="text-gold text-2xl leading-none transition-transform group-open:rotate-45">+</span>
+                <summary className="flex cursor-pointer list-none items-start justify-between gap-6">
+                  <h3 className="font-display text-lg text-navy lg:text-xl">{f.q}</h3>
+                  <span className="text-2xl leading-none text-gold transition-transform group-open:rotate-45">+</span>
                 </summary>
-                <p className="mt-4 text-muted-foreground leading-relaxed">{f.a}</p>
+                <p className="mt-4 leading-relaxed text-muted-foreground">{f.a}</p>
               </details>
             ))}
           </div>
