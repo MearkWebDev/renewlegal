@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/PageHero";
 import { Logo } from "@/components/site/Logo";
-import { SiteImage } from "@/components/site/SiteImage";
+
 import { Mail, Phone, MapPin, Linkedin, Clock } from "lucide-react";
 import officeAsset from "@/assets/renew-legal-premium-law-office.webp.asset.json";
 import portraitAsset from "@/assets/ehren-terenyi-renew-legal-portrait-2.png.asset.json";
@@ -95,12 +95,15 @@ function Page() {
                 </ContactRow>
               </div>
             </div>
-            <SiteImage
-              src={portraitAsset.url}
-              alt="Ehren Terenyi, Principal of Renew Legal"
-              className="aspect-[4/5] max-w-sm"
-              imageClassName="bg-stone object-contain p-6"
-            />
+            <div className="relative h-full min-h-[480px] w-full">
+              <img
+                src={portraitAsset.url}
+                alt="Ehren Terenyi, Principal of Renew Legal"
+                loading="lazy"
+                decoding="async"
+                className="absolute inset-0 h-full w-full object-cover object-[center_top]"
+              />
+            </div>
           </div>
         </div>
 

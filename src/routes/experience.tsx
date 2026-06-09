@@ -89,12 +89,15 @@ function Page() {
       <div className="container-prose space-y-16 py-24 lg:py-32">
         <section className="grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-4">
-            <SiteImage
-              src={portraitAsset.url}
-              alt="Ehren Terenyi, Principal of Renew Legal"
-              className="aspect-[4/5] max-w-sm"
-              imageClassName="bg-stone object-contain p-6"
-            />
+            <div className="relative h-full min-h-[480px] lg:min-h-[600px]">
+              <img
+                src={portraitAsset.url}
+                alt="Ehren Terenyi, Principal of Renew Legal"
+                loading="lazy"
+                decoding="async"
+                className="absolute inset-0 h-full w-full object-cover object-[center_top]"
+              />
+            </div>
           </div>
           <div className="lg:col-span-8">
             <div className="eyebrow">Principal-led experience</div>

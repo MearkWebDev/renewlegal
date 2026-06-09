@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/PageHero";
 import { CtaBand } from "@/components/site/CtaBand";
-import { SiteImage } from "@/components/site/SiteImage";
+import { Briefcase, Clock, Scale, Users, ShieldCheck, Gauge } from "lucide-react";
 import automationAsset from "@/assets/renew-legal-project-automation-factory.png.asset.json";
-import portraitAsset from "@/assets/ehren-terenyi-renew-legal-portrait-2.png.asset.json";
+import constructionAsset from "@/assets/renew-legal-project-construction-site.png.asset.json";
 
 const faqs = [
   { q: "Can Renew Legal join our team for a single matter?", a: "Yes. There is no minimum engagement term. Renew Legal can join your team for a single matter, a defined project period, or an ongoing arrangement entirely at your discretion. You pay only for client-billable work actually performed." },
@@ -57,28 +57,35 @@ function Page() {
       />
 
       <section className="container-prose py-24 lg:py-32">
-        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-4">
-            <SiteImage
-              src={portraitAsset.url}
-              alt="Ehren Terenyi, construction law consultant for law firms"
-              className="aspect-[4/5] max-w-sm"
-              imageClassName="bg-stone object-contain p-6"
-            />
+        <div className="max-w-3xl">
+          <div className="eyebrow">Principal-led support</div>
+          <h2 className="mt-6 text-3xl text-navy lg:text-5xl">A direct specialist resource for your team</h2>
+          <div className="gold-rule mt-8" />
+          <div className="mt-8 space-y-6 leading-relaxed text-foreground/80">
+            <p>
+              Law firms engage Renew Legal because clients need genuine specialist capability, not just extra hands. Ehren Terenyi joins your matter as an experienced senior construction and renewables lawyer who can work independently, integrate quickly, and communicate with partners and clients at a top-tier standard.
+            </p>
+            <p>
+              The arrangement stays flexible: single matters, overflow support, secondments and fixed-period cover. Your firm retains the client relationship while gaining immediate access to specialist project and disputes expertise.
+            </p>
           </div>
-          <div className="lg:col-span-8">
-            <div className="eyebrow">Principal-led support</div>
-            <h2 className="mt-6 text-3xl text-navy lg:text-5xl">A direct specialist resource for your team</h2>
-            <div className="gold-rule mt-8" />
-            <div className="mt-8 space-y-6 leading-relaxed text-foreground/80">
-              <p>
-                Law firms engage Renew Legal because clients need genuine specialist capability, not just extra hands. Ehren Terenyi joins your matter as an experienced senior construction and renewables lawyer who can work independently, integrate quickly, and communicate with partners and clients at a top-tier standard.
-              </p>
-              <p>
-                The arrangement stays flexible: single matters, overflow support, secondments and fixed-period cover. Your firm retains the client relationship while gaining immediate access to specialist project and disputes expertise.
-              </p>
+        </div>
+
+        <div className="mt-16 grid gap-px bg-border md:grid-cols-2 lg:grid-cols-3">
+          {[
+            { Icon: Briefcase, t: "20+ years", d: "Top-tier, in-house and Federal Court Associate experience across construction, renewables and infrastructure." },
+            { Icon: Scale, t: "Special Counsel standard", d: "Work product, judgement and client-facing communication at the standard of a top-tier senior fee earner." },
+            { Icon: Users, t: "Embedded in your team", d: "Works under your direction, in your time-recording system, communicating directly with your partners and clients." },
+            { Icon: Clock, t: "No minimum term", d: "Single matters, overflow, secondments or fixed-period cover. Stop at any time with no further cost." },
+            { Icon: ShieldCheck, t: "ILP status", d: "Incorporated legal practice regulated under the Legal Profession Uniform Law — a contractor, not a referral arrangement." },
+            { Icon: Gauge, t: "Fast onboarding", d: "Integrates quickly into LEAP, Actionstep, PracticeEvolve, Elite or any other firm software." },
+          ].map(({ Icon, t, d }) => (
+            <div key={t} className="bg-white p-10 lg:p-12">
+              <div className="text-gold"><Icon size={28} strokeWidth={1.5} /></div>
+              <h3 className="mt-6 font-display text-xl text-navy">{t}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{d}</p>
             </div>
-          </div>
+          ))}
         </div>
       </section>
 
@@ -105,18 +112,27 @@ function Page() {
         </div>
       </section>
 
-      <section className="bg-navy text-white">
-        <div className="container-prose py-24 lg:py-32">
+      <section className="relative overflow-hidden bg-navy text-white">
+        <img
+          src={constructionAsset.url}
+          alt=""
+          aria-hidden
+          loading="lazy"
+          decoding="async"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-navy/70" aria-hidden />
+        <div className="container-prose relative py-24 lg:py-32">
           <div className="max-w-3xl">
             <div className="eyebrow !text-gold-soft">When to use us</div>
             <h2 className="mt-6 text-3xl text-white lg:text-5xl">When to bring Renew Legal in</h2>
           </div>
-          <div className="mt-14 divide-y divide-white/15 border-y border-white/15">
+          <div className="mt-14 divide-y divide-white/20 border-y border-white/20">
             {situations.map(([s, w, d]) => (
               <div key={s} className="grid gap-6 py-8 md:grid-cols-12">
                 <div className="font-display text-lg text-gold-soft md:col-span-4">{s}</div>
-                <div className="leading-relaxed text-white/78 md:col-span-6">{w}</div>
-                <div className="text-xs uppercase tracking-[0.18em] text-white/55 md:col-span-2 md:text-right">{d}</div>
+                <div className="leading-relaxed text-white md:col-span-6">{w}</div>
+                <div className="text-xs uppercase tracking-[0.18em] text-white/70 md:col-span-2 md:text-right">{d}</div>
               </div>
             ))}
           </div>
