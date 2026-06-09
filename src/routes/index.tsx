@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import windFarmAsset from "@/assets/renew-legal-project-wind-farm.png.asset.json";
 import constructionAsset from "@/assets/renew-legal-project-construction-site.png.asset.json";
 import automationAsset from "@/assets/renew-legal-project-automation-factory.png.asset.json";
-import portraitAsset from "@/assets/ehren-terenyi-renew-legal.webp.asset.json";
+import portraitAsset from "@/assets/ehren-terenyi-renew-legal-portrait-2.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
