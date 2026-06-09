@@ -169,12 +169,48 @@
     font-size: 0.875rem;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    border: 1px solid rgba(255,255,255,0.4);
+    border: 1px solid color-mix(in oklab, white 40%, transparent);
     transition: all 240ms ease;
   }
   .btn-outline:hover {
     border-color: var(--color-gold);
     color: var(--color-gold);
+  }
+
+  .site-image-frame {
+    position: relative;
+    overflow: hidden;
+    background: var(--color-navy-deep);
+  }
+
+  .site-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 500ms ease, filter 500ms ease;
+    filter: saturate(0.92) contrast(1.02);
+  }
+
+  .site-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      color-mix(in oklab, var(--color-navy) 18%, transparent),
+      color-mix(in oklab, var(--color-navy-deep) 52%, transparent)
+    );
+    pointer-events: none;
+    transition: opacity 300ms ease;
+  }
+
+  .site-image-frame:hover .site-image {
+    transform: scale(1.04);
+    filter: saturate(0.98) contrast(1.06);
+  }
+
+  .site-image-frame:hover .site-image-overlay {
+    opacity: 0.82;
   }
 
   .btn-ghost-dark {

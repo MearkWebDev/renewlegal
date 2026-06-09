@@ -1,7 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/PageHero";
 import { CtaBand } from "@/components/site/CtaBand";
-import heroWind from "@/assets/hero-windfarm.jpg";
+import { SiteImage } from "@/components/site/SiteImage";
+import windFarmAsset from "@/assets/renew-legal-wind-farm.webp.asset.json";
+import solarFarmAsset from "@/assets/renew-legal-solar-farm.webp.asset.json";
+import constructionAsset from "@/assets/renew-legal-construction-project.webp.asset.json";
 
 export const Route = createFileRoute("/experience")({
   head: () => ({
@@ -11,7 +14,7 @@ export const Route = createFileRoute("/experience")({
       { property: "og:title", content: "Construction & Renewables Project Experience — Renew Legal" },
       { property: "og:description", content: "Representative project experience across construction, renewables, infrastructure and technology integration." },
       { property: "og:url", content: "/experience" },
-      { property: "og:image", content: "/og-experience.jpg" },
+      { property: "og:image", content: windFarmAsset.url },
     ],
     links: [{ rel: "canonical", href: "/experience" }],
   }),
@@ -75,10 +78,17 @@ function Page() {
         eyebrow="Project Experience"
         title={<>Construction & renewables project experience — Australia & Asia Pacific</>}
         intro="A representative selection of project experience. Ehren Terenyi has delivered legal advice on more than 6 GW of renewables and on major construction, infrastructure and technology integration projects."
-        image={heroWind}
+        image={windFarmAsset.url}
+        imageAlt="Renewables Project Legal Counsel Australia"
+        priority
       />
 
-      <div className="container-prose py-24 lg:py-32 space-y-24">
+      <div className="container-prose py-24 lg:py-32 space-y-16">
+        <div className="grid gap-6 md:grid-cols-2">
+          <SiteImage src={solarFarmAsset.url} alt="Solar farm legal counsel Australia – Renew Legal" className="aspect-[16/10]" />
+          <SiteImage src={constructionAsset.url} alt="EPC Contract Lawyer Melbourne – Renew Legal" className="aspect-[16/10]" />
+        </div>
+
         {sections.map((s, idx) => (
           <section key={s.h} className="grid lg:grid-cols-12 gap-12">
             <div className="lg:col-span-4">

@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+import { Logo } from "@/components/site/Logo";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -23,22 +24,24 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const useDarkLogo = scrolled || open;
+
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-        scrolled || open
+        useDarkLogo
           ? "bg-white/95 backdrop-blur-md border-b border-border shadow-[0_1px_0_rgba(184,155,94,0.15)]"
           : "bg-transparent"
       }`}
     >
-      <div className="container-prose flex items-center justify-between h-20 lg:h-24">
-        <Link to="/" className="flex items-baseline gap-2 group" aria-label="Renew Legal home">
-          <span
-            className={`font-display text-2xl lg:text-3xl tracking-tight transition-colors ${
-              scrolled || open ? "text-navy" : "text-white"
-            }`}
-          >
-            Renew<span className="text-gold">.</span>Legal
+      <div className="container-prose flex items-center justify-between h-20 lg:h-24 gap-6">
+        <Link to="/" className="group flex items-center" aria-label="Renew Legal home">
+          <span className="block w-[148px] lg:w-[180px]">
+            <Logo
+              variant={useDarkLogo ? "dark" : "light"}
+              priority
+              className="max-h-10 lg:max-h-11"
+            />
           </span>
         </Link>
 
@@ -48,7 +51,7 @@ export function Header() {
               key={item.to}
               to={item.to}
               className={`text-[0.78rem] tracking-[0.12em] uppercase font-medium transition-colors ${
-                scrolled ? "text-charcoal hover:text-gold" : "text-white/90 hover:text-gold"
+                useDarkLogo ? "text-charcoal hover:text-gold" : "text-white/90 hover:text-gold"
               }`}
               activeProps={{ className: "text-gold" }}
             >
@@ -65,7 +68,7 @@ export function Header() {
 
         <button
           onClick={() => setOpen((v) => !v)}
-          className={`lg:hidden p-2 ${scrolled || open ? "text-navy" : "text-white"}`}
+          className={`lg:hidden p-2 ${useDarkLogo ? "text-navy" : "text-white"}`}
           aria-label="Toggle menu"
         >
           {open ? <X size={22} /> : <Menu size={22} />}
@@ -75,6 +78,11 @@ export function Header() {
       {open && (
         <div className="lg:hidden border-t border-border bg-white">
           <nav className="container-prose flex flex-col py-6 gap-1" aria-label="Mobile">
+            <div className="pb-5 mb-2 border-b border-border/80">
+              <span className="block w-[152px]">
+                <Logo variant="dark" className="max-h-10" />
+              </span>
+            </div>
             {nav.map((item) => (
               <Link
                 key={item.to}
@@ -95,3 +103,4 @@ export function Header() {
     </header>
   );
 }
+
