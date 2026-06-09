@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/PageHero";
 import { Logo } from "@/components/site/Logo";
-import { SiteImage } from "@/components/site/SiteImage";
+
 import { Mail, Phone, MapPin, Linkedin, Clock } from "lucide-react";
 import officeAsset from "@/assets/renew-legal-premium-law-office.webp.asset.json";
 import portraitAsset from "@/assets/ehren-terenyi-renew-legal-portrait-2.png.asset.json";
