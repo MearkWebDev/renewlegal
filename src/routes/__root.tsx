@@ -65,8 +65,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:title", content: "Renew Legal — Construction, Renewables & Technology Lawyers Melbourne" },
       { property: "og:description", content: "Specialist construction, renewables and infrastructure law firm in Melbourne. Fixed fees, senior-only advice, EPC and BESS expertise." },
       { name: "twitter:description", content: "Specialist construction, renewables and infrastructure law firm in Melbourne. Fixed fees, senior-only advice, EPC and BESS expertise." },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/LaCKiZYccTRUnYTPnvd0dZBgKof1/social-images/social-1781005415898-renew-legal-header-logo_8031d425-72d7-499a-9f2b-8bc9bf5ca0b9.webp" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/LaCKiZYccTRUnYTPnvd0dZBgKof1/social-images/social-1781005415898-renew-legal-header-logo_8031d425-72d7-499a-9f2b-8bc9bf5ca0b9.webp" },
+      { property: "og:image", content: windFarmAsset.url },
+      { name: "twitter:image", content: windFarmAsset.url },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
