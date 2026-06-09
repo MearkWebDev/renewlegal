@@ -11,24 +11,16 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { Header } from "../components/site/Header";
+import { Footer } from "../components/site/Footer";
 
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
-        </p>
-        <div className="mt-6">
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Go home
-          </Link>
-        </div>
+        <h1 className="font-display text-7xl text-navy">404</h1>
+        <p className="mt-4 text-muted-foreground">This page could not be found.</p>
+        <Link to="/" className="btn-primary mt-8 inline-flex">Return home</Link>
       </div>
     </div>
   );
@@ -40,32 +32,14 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   useEffect(() => {
     reportLovableError(error, { boundary: "tanstack_root_error_component" });
   }, [error]);
-
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <h1 className="text-xl font-semibold tracking-tight text-foreground">
-          This page didn't load
-        </h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Something went wrong on our end. You can try refreshing or head back home.
-        </p>
-        <div className="mt-6 flex flex-wrap justify-center gap-2">
-          <button
-            onClick={() => {
-              router.invalidate();
-              reset();
-            }}
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Try again
-          </button>
-          <a
-            href="/"
-            className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
-          >
-            Go home
-          </a>
+        <h1 className="font-display text-3xl text-navy">This page didn't load</h1>
+        <p className="mt-4 text-sm text-muted-foreground">Something went wrong. Try again or return home.</p>
+        <div className="mt-6 flex gap-3 justify-center">
+          <button onClick={() => { router.invalidate(); reset(); }} className="btn-primary">Try again</button>
+          <a href="/" className="btn-ghost-dark">Go home</a>
         </div>
       </div>
     </div>
@@ -77,19 +51,48 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Renew Legal — Construction, Renewables & Technology Lawyers Melbourne" },
+      { name: "description", content: "Specialist construction, renewables and infrastructure law firm in Melbourne. Fixed fees, senior-only advice, EPC and BESS expertise." },
+      { name: "author", content: "Renew Legal" },
+      { property: "og:site_name", content: "Renew Legal" },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "theme-color", content: "#0F2747" },
     ],
     links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: appCss,
+        href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap",
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "LegalService",
+          name: "Renew Legal",
+          alternateName: "Renew Legal Pty Ltd",
+          description:
+            "Boutique construction, renewables and technology integration law firm based in Melbourne, Australia.",
+          url: "/",
+          telephone: "+61 418 342 682",
+          email: "ehren@renewlegal.com.au",
+          founder: { "@type": "Person", name: "Ehren Terenyi" },
+          areaServed: "AU",
+          priceRange: "$$$",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "Suite 208, 282 Collins Street, Block Arcade",
+            addressLocality: "Melbourne",
+            addressRegion: "VIC",
+            postalCode: "3000",
+            addressCountry: "AU",
+          },
+        }),
       },
     ],
   }),
@@ -101,7 +104,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en-AU">
       <head>
         <HeadContent />
       </head>
@@ -115,11 +118,13 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <Header />
+      <main id="main">
+        <Outlet />
+      </main>
+      <Footer />
     </QueryClientProvider>
   );
 }
