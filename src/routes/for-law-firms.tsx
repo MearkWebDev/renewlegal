@@ -4,6 +4,7 @@ import { CtaBand } from "@/components/site/CtaBand";
 import { Briefcase, Clock, Scale, Users, ShieldCheck, Gauge } from "lucide-react";
 import automationAsset from "@/assets/renew-legal-project-automation-factory.png.asset.json";
 import constructionAsset from "@/assets/renew-legal-project-construction-site.png.asset.json";
+import boardroomAsset from "@/assets/renew-legal-law-firms-boardroom.jpg.asset.json";
 
 const faqs = [
   { q: "Can Renew Legal join our team for a single matter?", a: "Yes. There is no minimum engagement term. Renew Legal can join your team for a single matter, a defined project period, or an ongoing arrangement entirely at your discretion. You pay only for client-billable work actually performed." },
