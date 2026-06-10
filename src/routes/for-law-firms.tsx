@@ -58,17 +58,30 @@ function Page() {
       />
 
       <section className="container-prose py-24 lg:py-32">
-        <div className="max-w-3xl">
-          <div className="eyebrow">Principal-led support</div>
-          <h2 className="mt-6 text-3xl text-navy lg:text-5xl">A direct specialist resource for your team</h2>
-          <div className="gold-rule mt-8" />
-          <div className="mt-8 space-y-6 leading-relaxed text-foreground/80">
-            <p>
-              Law firms engage Renew Legal because clients need genuine specialist capability, not just extra hands. Ehren Terenyi joins your matter as an experienced senior construction and renewables lawyer who can work independently, integrate quickly, and communicate with partners and clients at a top-tier standard.
-            </p>
-            <p>
-              The arrangement stays flexible: single matters, overflow support, secondments and fixed-period cover. Your firm retains the client relationship while gaining immediate access to specialist project and disputes expertise.
-            </p>
+        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-7">
+            <div className="eyebrow">Principal-led support</div>
+            <h2 className="mt-6 text-3xl text-navy lg:text-5xl">A direct specialist resource for your team</h2>
+            <div className="gold-rule mt-8" />
+            <div className="mt-8 space-y-6 leading-relaxed text-foreground/80">
+              <p>
+                Law firms engage Renew Legal because clients need genuine specialist capability, not just extra hands. Ehren Terenyi joins your matter as an experienced senior construction and renewables lawyer who can work independently, integrate quickly, and communicate with partners and clients at a top-tier standard.
+              </p>
+              <p>
+                The arrangement stays flexible: single matters, overflow support, secondments and fixed-period cover. Your firm retains the client relationship while gaining immediate access to specialist project and disputes expertise.
+              </p>
+            </div>
+          </div>
+          <div className="lg:col-span-5">
+            <div className="relative aspect-[5/6] w-full overflow-hidden">
+              <img
+                src={boardroomAsset.url}
+                alt="Premium Australian corporate law firm boardroom — Renew Legal consultant resource"
+                loading="lazy"
+                decoding="async"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+            </div>
           </div>
         </div>
 
