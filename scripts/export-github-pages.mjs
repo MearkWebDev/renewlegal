@@ -22,6 +22,8 @@ const pageRoutes = [
   "/contact",
 ];
 
+const routedPagePaths = pageRoutes.filter((route) => route !== "/").sort((a, b) => b.length - a.length);
+
 function routeToRequestPath(route) {
   return route === "/" ? `${BASE_PATH}/` : `${BASE_PATH}${route}`;
 }
@@ -33,9 +35,17 @@ function routeToOutputPath(route) {
 }
 
 function rewriteForGitHubPages(content) {
-  return content
+  let rewritten = content
     .replaceAll(`${BASE_PATH}${BASE_PATH}/__l5e/`, `${BASE_PATH}/__l5e/`)
     .replace(/(?<!\/renewlegal)\/__l5e\//g, `${BASE_PATH}/__l5e/`);
+
+  for (const route of routedPagePaths) {
+    rewritten = rewritten
+      .replaceAll(`href="${route}`, `href="${BASE_PATH}${route}`)
+      .replaceAll(`content="${route}`, `content="${BASE_PATH}${route}`);
+  }
+
+  return rewritten;
 }
 
 async function listFiles(dir) {
