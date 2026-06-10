@@ -87,9 +87,9 @@ function Page() {
       />
 
       <div className="container-prose space-y-16 py-24 lg:py-32">
-        <section className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+        <section className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-4">
-            <div className="relative h-full min-h-[480px] lg:min-h-[600px]">
+            <div className="relative mx-auto" style={{ width: "446.66px", height: "450px", maxWidth: "100%" }}>
               <img
                 src={portraitAsset.url}
                 alt="Ehren Terenyi, Principal of Renew Legal"

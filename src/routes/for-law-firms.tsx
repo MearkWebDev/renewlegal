@@ -4,6 +4,7 @@ import { CtaBand } from "@/components/site/CtaBand";
 import { Briefcase, Clock, Scale, Users, ShieldCheck, Gauge } from "lucide-react";
 import automationAsset from "@/assets/renew-legal-project-automation-factory.png.asset.json";
 import constructionAsset from "@/assets/renew-legal-project-construction-site.png.asset.json";
+import boardroomAsset from "@/assets/renew-legal-law-firms-boardroom.jpg.asset.json";
 
 const faqs = [
   { q: "Can Renew Legal join our team for a single matter?", a: "Yes. There is no minimum engagement term. Renew Legal can join your team for a single matter, a defined project period, or an ongoing arrangement entirely at your discretion. You pay only for client-billable work actually performed." },
@@ -57,17 +58,30 @@ function Page() {
       />
 
       <section className="container-prose py-24 lg:py-32">
-        <div className="max-w-3xl">
-          <div className="eyebrow">Principal-led support</div>
-          <h2 className="mt-6 text-3xl text-navy lg:text-5xl">A direct specialist resource for your team</h2>
-          <div className="gold-rule mt-8" />
-          <div className="mt-8 space-y-6 leading-relaxed text-foreground/80">
-            <p>
-              Law firms engage Renew Legal because clients need genuine specialist capability, not just extra hands. Ehren Terenyi joins your matter as an experienced senior construction and renewables lawyer who can work independently, integrate quickly, and communicate with partners and clients at a top-tier standard.
-            </p>
-            <p>
-              The arrangement stays flexible: single matters, overflow support, secondments and fixed-period cover. Your firm retains the client relationship while gaining immediate access to specialist project and disputes expertise.
-            </p>
+        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-7">
+            <div className="eyebrow">Principal-led support</div>
+            <h2 className="mt-6 text-3xl text-navy lg:text-5xl">A direct specialist resource for your team</h2>
+            <div className="gold-rule mt-8" />
+            <div className="mt-8 space-y-6 leading-relaxed text-foreground/80">
+              <p>
+                Law firms engage Renew Legal because clients need genuine specialist capability, not just extra hands. Ehren Terenyi joins your matter as an experienced senior construction and renewables lawyer who can work independently, integrate quickly, and communicate with partners and clients at a top-tier standard.
+              </p>
+              <p>
+                The arrangement stays flexible: single matters, overflow support, secondments and fixed-period cover. Your firm retains the client relationship while gaining immediate access to specialist project and disputes expertise.
+              </p>
+            </div>
+          </div>
+          <div className="lg:col-span-5">
+            <div className="relative aspect-[5/6] w-full overflow-hidden">
+              <img
+                src={boardroomAsset.url}
+                alt="Premium Australian corporate law firm boardroom — Renew Legal consultant resource"
+                loading="lazy"
+                decoding="async"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+            </div>
           </div>
         </div>
 

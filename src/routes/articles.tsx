@@ -3,6 +3,7 @@ import { PageHero } from "@/components/site/PageHero";
 import { CtaBand } from "@/components/site/CtaBand";
 import { BookOpen, FileText, Lightbulb, Newspaper } from "lucide-react";
 import editorialHeroAsset from "@/assets/renew-legal-articles-editorial.jpg.asset.json";
+import thoughtLeadershipAsset from "@/assets/renew-legal-articles-thought-leadership.jpg.asset.json";
 
 export const Route = createFileRoute("/articles")({
   head: () => ({
@@ -53,17 +54,30 @@ function Page() {
       />
 
       <section className="container-prose py-24 lg:py-32">
-        <div className="max-w-3xl">
-          <div className="eyebrow">Thought leadership</div>
-          <h2 className="mt-6 text-3xl text-navy lg:text-5xl">Practical commentary from a specialist construction lawyer</h2>
-          <div className="gold-rule mt-8" />
-          <div className="mt-8 space-y-6 leading-relaxed text-foreground/80">
-            <p>
-              Renew Legal articles are written by Ehren Terenyi and focus on the questions project teams, contractors and law firms actually ask in live matters. The emphasis is practical: risk allocation, dispute strategy, contract administration and the real commercial consequences of legal drafting.
-            </p>
-            <p>
-              The aim is not generic content marketing. It is useful, decision-ready commentary grounded in specialist experience across construction, renewables, infrastructure and technology integration projects.
-            </p>
+        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-7">
+            <div className="eyebrow">Thought leadership</div>
+            <h2 className="mt-6 text-3xl text-navy lg:text-5xl">Practical commentary from a specialist construction lawyer</h2>
+            <div className="gold-rule mt-8" />
+            <div className="mt-8 space-y-6 leading-relaxed text-foreground/80">
+              <p>
+                Renew Legal articles are written by Ehren Terenyi and focus on the questions project teams, contractors and law firms actually ask in live matters. The emphasis is practical: risk allocation, dispute strategy, contract administration and the real commercial consequences of legal drafting.
+              </p>
+              <p>
+                The aim is not generic content marketing. It is useful, decision-ready commentary grounded in specialist experience across construction, renewables, infrastructure and technology integration projects.
+              </p>
+            </div>
+          </div>
+          <div className="lg:col-span-5">
+            <div className="relative aspect-[5/6] w-full overflow-hidden">
+              <img
+                src={thoughtLeadershipAsset.url}
+                alt="Construction law publications and legal research — Renew Legal thought leadership"
+                loading="lazy"
+                decoding="async"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+            </div>
           </div>
         </div>
 

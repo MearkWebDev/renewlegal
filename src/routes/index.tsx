@@ -184,9 +184,9 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="container-prose grid gap-12 py-28 lg:grid-cols-12 lg:gap-20 lg:py-40">
+      <section className="container-prose grid items-center gap-12 py-28 lg:grid-cols-12 lg:gap-20 lg:py-40">
         <div className="lg:col-span-5">
-          <div className="relative h-full min-h-[520px] lg:min-h-[640px]">
+          <div className="relative mx-auto" style={{ width: "446.66px", height: "450px", maxWidth: "100%" }}>
             <img
               src={portraitAsset.url}
               alt="Ehren Terenyi, Principal of Renew Legal Melbourne"
