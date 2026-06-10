@@ -6,9 +6,7 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
-    "build:github-pages": "bun run build && bun run export:github-pages",
     "build:dev": "vite build --mode development",
-    "export:github-pages": "node scripts/export-github-pages.mjs",
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write ."

@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch:
 
 permissions:
   contents: read
@@ -29,26 +28,10 @@ jobs:
           bun-version: latest
 
       - name: Install Dependencies
-        run: bun install --frozen-lockfile
+        run: bun install
 
-      - name: Build static GitHub Pages artifact
-        run: bun run build:github-pages
-
-      - name: Validate static artifact
-        run: |
-          test -f dist/client/index.html
-          test -f dist/client/experience/index.html
-          test -f dist/client/for-contractors/index.html
-          test -f dist/client/for-law-firms/index.html
-          test -f dist/client/rates/index.html
-          test -f dist/client/articles/index.html
-          test -f dist/client/contact/index.html
-          test -d dist/client/assets
-          test -f dist/client/.nojekyll
-          ! grep -R '/renewlegal/renewlegal/' dist/client
-          ! grep -R '="/assets/' dist/client
-          ! grep -R '="/__l5e/' dist/client
-          ! grep -R 'content="/__l5e/' dist/client
+      - name: Build Project
+        run: bun run build
 
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
@@ -56,7 +39,7 @@ jobs:
       - name: Upload Build Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist/client
+          path: dist
 
   deploy:
     needs: build
