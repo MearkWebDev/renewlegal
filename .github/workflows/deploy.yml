@@ -45,8 +45,10 @@ jobs:
           test -f dist/client/contact/index.html
           test -d dist/client/assets
           test -f dist/client/.nojekyll
+          ! grep -R '/renewlegal/renewlegal/' dist/client
           ! grep -R '="/assets/' dist/client
           ! grep -R '="/__l5e/' dist/client
+          ! grep -R 'content="/__l5e/' dist/client
 
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
