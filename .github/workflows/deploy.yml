@@ -1,4 +1,3 @@
-```yaml
 name: Deploy to GitHub Pages
 
 on:
@@ -11,6 +10,10 @@ permissions:
   pages: write
   id-token: write
 
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -21,6 +24,8 @@ jobs:
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
 
       - name: Install Dependencies
         run: bun install
@@ -28,11 +33,29 @@ jobs:
       - name: Build Project
         run: bun run build
 
+      - name: List Build Files
+        run: |
+          echo "Build completed"
+          find . -type d | sort
+
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Build Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .output/public
+
   deploy:
     needs: build
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
     runs-on: ubuntu-latest
 
     steps:
-      - name: Deployment Complete
-        run: echo "Build Successful"
-```
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
