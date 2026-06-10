@@ -33,7 +33,9 @@ function routeToOutputPath(route) {
 }
 
 function rewriteForGitHubPages(content) {
-  return content.replaceAll("/__l5e/", `${BASE_PATH}/__l5e/`);
+  return content
+    .replaceAll(`${BASE_PATH}${BASE_PATH}/__l5e/`, `${BASE_PATH}/__l5e/`)
+    .replace(/(?<!\/renewlegal)\/__l5e\//g, `${BASE_PATH}/__l5e/`);
 }
 
 async function listFiles(dir) {
