@@ -3,6 +3,7 @@ import { PageHero } from "@/components/site/PageHero";
 import { CtaBand } from "@/components/site/CtaBand";
 import { BookOpen, FileText, Lightbulb, Newspaper } from "lucide-react";
 import editorialHeroAsset from "@/assets/renew-legal-articles-editorial.jpg.asset.json";
+import thoughtLeadershipAsset from "@/assets/renew-legal-articles-thought-leadership.jpg.asset.json";
 
 export const Route = createFileRoute("/articles")({
   head: () => ({
